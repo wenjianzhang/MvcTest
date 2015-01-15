@@ -1789,10 +1789,6 @@
       <Project>{52dc368d-d5a4-4807-8803-56a79656bddd}</Project>
       <Name>DataModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ThirdPartyApi\ThirdPartyApi.csproj">
-      <Project>{c3407ae3-a8ee-4070-8f02-1873b1471d59}</Project>
-      <Name>ThirdPartyApi</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
