@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SpidersDBModelStoreContainer" CdmEntityContainer="SpidersDBEntities">
+    <EntitySetMapping Name="CollectionRulesTabs">
+      <EntityTypeMapping TypeName="SpidersDBModel.CollectionRulesTab">
+        <MappingFragment StoreEntitySet="CollectionRulesTab">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CollectionName" ColumnName="CollectionName" />
+          <ScalarProperty Name="SourceSiteTag" ColumnName="SourceSiteTag" />
+          <ScalarProperty Name="SourceSiteName" ColumnName="SourceSiteName" />
+          <ScalarProperty Name="BaseUrl" ColumnName="BaseUrl" />
+          <ScalarProperty Name="CollectionListRulesBig" ColumnName="CollectionListRulesBig" />
+          <ScalarProperty Name="CollectionListRulesMin" ColumnName="CollectionListRulesMin" />
+          <ScalarProperty Name="CollectionUrl" ColumnName="CollectionUrl" />
+          <ScalarProperty Name="Contentleft" ColumnName="Contentleft" />
+          <ScalarProperty Name="Contentright" ColumnName="Contentright" />
+          <ScalarProperty Name="Titleleft" ColumnName="Titleleft" />
+          <ScalarProperty Name="Titleright" ColumnName="Titleright" />
+          <ScalarProperty Name="Imgleft" ColumnName="Imgleft" />
+          <ScalarProperty Name="Imgright" ColumnName="Imgright" />
+          <ScalarProperty Name="NewPublishTimeLeft" ColumnName="NewPublishTimeLeft" />
+          <ScalarProperty Name="NewPublishTimeRight" ColumnName="NewPublishTimeRight" />
+          <ScalarProperty Name="TypeNameLeft" ColumnName="TypeNameLeft" />
+          <ScalarProperty Name="TypeNameRight" ColumnName="TypeNameRight" />
+          <ScalarProperty Name="Encoding" ColumnName="Encoding" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewsTabs">
+      <EntityTypeMapping TypeName="SpidersDBModel.NewsTab">
+        <MappingFragment StoreEntitySet="NewsTab">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SourceSiteTag" ColumnName="SourceSiteTag" />
+          <ScalarProperty Name="SourceSiteName" ColumnName="SourceSiteName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="NewPublishTime" ColumnName="NewPublishTime" />
+          <ScalarProperty Name="BaseUrl" ColumnName="BaseUrl" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

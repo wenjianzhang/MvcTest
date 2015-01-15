@@ -1,0 +1,183 @@
+﻿@model PagedList.IPagedList<MvcTest.Models.Role>
+@using PagedList.Mvc;
+@using MvcTest.Extensions;
+@using MvcTest.Models;
+@{
+    ViewBag.Title = "Index";
+    string[] EName = ViewBag.EName as string[];
+}
+@section HeadContent{
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/Content/css/uniform.css" />
+    <link rel="stylesheet" href="~/Content/css/select2.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-media.css" />
+    @*<link href="fonts/css/font-awesome.css" rel="stylesheet" />
+        <link href="~/Content/PagedList.css" rel="stylesheet" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>*@
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/Home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">角色表</a> </div>
+    </div>
+    <div class="container-fluid">
+        <div class="widget-box">
+            <div class="widget-content">
+                @if (EName.Contains("Create"))
+                {
+                    @Html.ActionLink("新建", "Create", new { }, new { @class = "btn btn-primary", @onclick = "OnloadMessage2()" })
+                }
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"><i class="icon-th"></i></span>
+                        <h5>角色表</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <table class="table table-bordered table-striped with-check">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="title-checkbox" name="title-checkbox" /></th>
+
+                                    <th>
+                                        角色名称
+                                    </th>
+                                    <th>
+                                        操作
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="gradeX">
+
+                                        <td>
+                                            @Html.CheckBox(item.RID.ToString())
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @if (EName.Contains("Edit"))
+                                            {
+                                                @Html.ActionLink("修改", "Edit", new { id = item.RID }, new { @class = "btn btn-primary btn-mini", @onclick = "OnloadMessage2()" })
+                                            }
+
+                                            @if (EName.Contains("Details"))
+                                            {
+                                                @Html.ActionLink("详情", "Details", new { id = item.RID }, new { @class = "btn btn-info btn-mini", @onclick = "OnloadMessage2()" })
+                                            }
+
+                                            @if (EName.Contains("Delete"))
+                                            {
+                                                <a class="btn btn-danger btn-mini" href="javascript:void(0);" onclick="myconfirm(@item.RID)">删除</a>
+                                            }
+
+                                            @if (EName.Contains("MenuInfoTable"))
+                                            {
+                                                <a onclick="alertwindow('@item.Name','MenuInfoTable?rid=@item.RID')" class="btn btn-success btn-mini">设置权限</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div style=" text-align:center;">
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { pageindex = page }))
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section FootContent{
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+    <script src="~/Scripts/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/matrix.tables.js"></script>
+    <script src="~/Scripts/layer/layer.min.js"></script>
+    <script>
+
+        @*alertwindow('myIframe_@item.RID', 'myModal_@item.RID', 'MenuInfoTable?id=@item.RID#myModal_@item.RID')*@
+        //function alertwindow(myIframe, myModal, url) {
+        //    $('#' + myIframe).attr("src", url);
+        //    $('#' + myModal).modal({ show: true });
+        //}
+        function alertwindow(rolename, url) {
+            $.layer({
+                name: "setrole",
+                type: 2,
+                title: '当前配置【' + rolename + '】角色的权限',
+                // title: '当前配置【@ViewBag.setRNname】角色的权限',
+                iframe: { src: url },
+                maxmin: false,
+                //area: ['900px', ($(window).height() - 450) + 'px'],
+                area: ['900px', '600px'],
+                offset: ['80px', ''],
+
+                success: function () {
+                }
+            });
+        }
+        // var index = parent.layer.getFrameIndex(window.name);
+        //function CloseWindow() {
+        //    parent.layer.msg('您将标记成功传送给了父窗口', 1, 1);
+        //    parent.layer.close(parent.layer.getFrameIndex(window.name));
+        //}
+        function CloseWindow(e) {
+            if (e.toString() == "OK") {
+                alert();
+                //var index = parent.layer.getFrameIndex(window.name);
+                layer.close(layer.getFrameIndex(window.name));
+            }
+        }
+    </script>
+}
+@section FootBottom{
+    <script>
+        function myconfirm(id) {
+            if (id == "" || id == undefined) {
+                layer.msg('参数错误', 1, 1);
+                return;
+            }
+
+            layer.confirm('确认删除？', function (index) {
+                layer.load("正在删除", 0);
+                Del(id);
+            });
+        }
+        function Del(id) {
+            if (id == "" || id == undefined) {
+
+                return;
+            }
+            $.ajax({
+                type: "post", url: "/Role/DeleteConfirmedCom", dataType: "text", data: { id: id }, success: function (data) {
+                    if (data.toString() == "OK") {
+                        layer.load("删除成功，正在跳转", 0);
+                        location.reload();
+                    }
+                    else if (data.toString() == "NO") {
+                        layer.msg('删除失败，请联系管理员', 2);
+                    }
+                }
+            });
+        }
+    </script>
+}

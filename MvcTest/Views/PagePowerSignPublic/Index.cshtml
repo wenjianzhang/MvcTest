@@ -1,0 +1,148 @@
+﻿@model PagedList.IPagedList<MvcTest.Models.PagePowerSignPublic>
+@using PagedList.Mvc;
+@using MvcTest.Extensions;
+@using MvcTest.Models;
+@{
+    ViewBag.Title = "Index";
+    string[] EName = ViewBag.EName as string[];
+}
+@section HeadContent{
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/Content/css/uniform.css" />
+    <link rel="stylesheet" href="~/Content/css/select2.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-media.css" />
+    @*<link href="fonts/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>*@
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/Home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">公用页面权限标志表</a> </div>
+    </div>
+    <div class="container-fluid">
+        <div class="widget-box">
+            <div class="widget-content">
+                @if (EName.Contains("Create"))
+                {
+                    @Html.ActionLink("新建", "Create", new { }, new { @class = "btn btn-primary" })
+                }
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"><i class="icon-th"></i></span>
+                        <h5>公用页面权限标志表</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <table class="table table-bordered table-striped with-check">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="title-checkbox" name="title-checkbox" /></th>
+                                    <th>
+                                        权限名称
+                                    </th>
+
+                                    <th>
+                                        权限英文名称
+                                    </th>
+                                    <th>
+                                        操作
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="gradeX">
+
+                                        <td>
+                                            @Html.CheckBox(item.PPSPID.ToString())
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EName)
+                                        </td>
+                                        <td>
+                                            @if (EName.Contains("Edit"))
+                                            {
+                                                @Html.ActionLink("修改", "Edit", new { id = item.PPSPID }, new { @class = "btn btn-primary btn-mini" })
+                                            }
+                                            
+                                            @if (EName.Contains("Details"))
+                                            {
+                                                @Html.ActionLink("详情", "Details", new { id = item.PPSPID }, new { @class = "btn btn-info btn-mini" })
+                                            }
+                                            
+                                            @if (EName.Contains("Delete"))
+                                            {
+                                                @*@Html.ActionLink("删除", "Delete", new { id = item.PPSPID }, new { @class = "btn btn-danger btn-mini" })*@
+                                                <a class="btn btn-danger btn-mini" href="javascript:void(0);" onclick="myconfirm(@item.PPSPID)">删除</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div style=" text-align:center;">
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { pageindex = page }))
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section FootContent{
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+    <script src="~/Scripts/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/matrix.tables.js"></script>
+}
+@section FootBottom{
+    <script>
+        function myconfirm(id) {
+            if (id == "" || id == undefined) {
+                layer.msg('参数错误', 1, 1);
+                return;
+            }
+
+            layer.confirm('确认删除？', function (index) {
+                layer.load("正在删除", 0);
+                Del(id);
+            });
+        }
+        function Del(id) {
+            if (id == "" || id == undefined) {
+
+                return;
+            }
+            $.ajax({
+                type: "post", url: "/PagePowerSignPublic/DeleteConfirmedCom", dataType: "text", data: { id: id}, success: function (data) {
+                    if (data.toString() == "OK") {
+                        layer.load("删除成功，正在跳转", 0);
+                        location.reload();
+                    }
+                    else if (data.toString() == "NO") {
+                        layer.msg('删除失败，请联系管理员', 2);
+                    }
+                }
+            });
+        }
+    </script>
+}

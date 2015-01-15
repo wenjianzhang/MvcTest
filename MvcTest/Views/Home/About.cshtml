@@ -1,0 +1,150 @@
+﻿@using System.Linq;
+@using System.Collections.Generic;
+@using Com.Fuwu.Common.DataModel.PortalWeb;
+@{
+    IEnumerable<TLiveCourse> allCourses;
+    var now = DateTime.Now;
+    using (var db = new Com.Fuwu.Common.DataModel.PortalWeb.PortalWebEntities())
+    {
+        allCourses = db.TLiveCourses.Where(c => c.PublishTime <= now && c.ExpireTime >= now).ToList();
+    }
+}
+
+<link href="http://resource.fuwucdn.com/static/www/topic/gk/css/reset.css" rel="stylesheet">
+<link href="http://resource.fuwucdn.com/static/www/topic/gk/css/gaokao.css" rel="stylesheet">
+<script src="http://resource.fuwucdn.com/static/www/topic/gk/js/setChange.js"></script>
+<script src="http://resource.fuwucdn.com/static/www/topic/gk/js/gaokao.js"></script>
+
+<!--中间内容部分开始-->
+<div class="gk-bannerbg">
+    <div class="gk-banner01">
+        <em id="daycount">347</em>
+        <div class="gk-tab">
+            <div id="tab-title">
+                <span class="selected">今日直播</span><span>明日直播</span>
+            </div>
+            <div id="tab-content">
+                <div id="today" class="content">
+                    <ul>
+                        @foreach (var course in allCourses.Where(r => r.StartTime.ToString("yyyyMMdd") == now.ToString("yyyyMMdd")).OrderBy(r => r.StartTime).Take(10))
+                        {
+                            <li>
+                                <span class="f-r" title="@course.CourseTitle"><a href="@course.LinkUrl">@course.CourseTitle</a></span><span class="f-l @((course.StartTime<=now && course.EndTime>now)?"live":"")">
+                                    <i></i>
+                                    @(course.StartTime > now ? course.StartTime.ToString("HH:mm") : (course.EndTime <= now ? "已结束" : "正在直播"))
+                                </span>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="listhide">
+                        @foreach (var course in allCourses.Where(r => r.StartTime.ToString("yyyyMMdd") == now.ToString("yyyyMMdd")).OrderBy(r => r.StartTime).Skip(10).Take(10))
+                        {
+                            <li>
+                                <span class="f-r" title="@course.CourseTitle"><a href="@course.LinkUrl">@course.CourseTitle</a></span><span class="f-l @((course.StartTime<=now && course.EndTime>now)?"live":"")">
+                                    <i></i>
+                                    @(course.StartTime > now ? course.StartTime.ToString("HH:mm") : (course.EndTime <= now ? "已结束" : "正在直播"))
+                                </span>
+                            </li>
+                        }
+                    </ul>
+                    <div id="fenye1" class="fenye"><i class="select">1</i><i>2</i></div>
+                </div>
+                <div id="tomorrow" class="content hide">
+                    <ul>
+                        @foreach (var course in allCourses.Where(r => r.StartTime.ToString("yyyyMMdd") == now.AddDays(1).ToString("yyyyMMdd")).OrderBy(r => r.StartTime).Take(10))
+                        {
+                            <li>
+                                <span class="f-r" title="@course.CourseTitle"><a href="@course.LinkUrl">@course.CourseTitle</a></span><span class="f-l @((course.StartTime<=now && course.EndTime>now)?"live":"")">
+                                    <i></i>
+                                    @(course.StartTime > now ? course.StartTime.ToString("HH:mm") : (course.EndTime <= now ? "已结束" : "正在直播"))
+                                </span>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="listhide">
+                        @foreach (var course in allCourses.Where(r => r.StartTime.ToString("yyyyMMdd") == now.AddDays(1).ToString("yyyyMMdd")).OrderBy(r => r.StartTime).Skip(10).Take(10))
+                        {
+                            <li>
+                                <span class="f-r" title="@course.CourseTitle"><a href="@course.LinkUrl">@course.CourseTitle</a></span><span class="f-l @((course.StartTime<=now && course.EndTime>now)?"live":"")">
+                                    <i></i>
+                                    @(course.StartTime > now ? course.StartTime.ToString("HH:mm") : (course.EndTime <= now ? "已结束" : "正在直播"))
+                                </span>
+                            </li>
+                        }
+                    </ul>
+                    <div id="fenye2" class="fenye"><i class="select">1</i><i>2</i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gk-contbg">
+    <div class="gk-banner02">
+        <a href="http://www.fuwu.com/Provider/Index/?id=21348" target="_blank">了解更多 >></a>
+    </div>
+    <div class="recom">
+        <h3><a id="pageindex" href="javascript:void(0)">换一换</a>小编推荐</h3>
+        <div class="gk-lesson">
+            <ul id="coureslist"></ul>
+        </div>
+    </div>
+    <div class="star">
+        <h4>明星教师</h4>
+        <!--滚动-->
+        <div id="featureContainer">
+            <div id="feature">
+                <div id="block">
+                    <div id="botton-scroll">
+                        <ul class="featureul">
+                            <li class="featurebox">
+                                <div class="box"><a href="http://www.fuwu.com/p/21348" target="_blank"><img alt="金彪老师" src="http://resource.fuwucdn.com/static/www/topic/gk/images/jb.jpg" width=194 height=130> </a></div>
+                            </li>
+                            <li class="featurebox">
+                                <div class="box"><a href="http://www.fuwu.com/p/16663" target="_blank"><img alt="季亚利老师" src="http://resource.fuwucdn.com/static/www/topic/gk/images/jyl.jpg" width=194 height=130> </a></div>
+                            </li>
+                            <li class="featurebox">
+                                <div class="box"><a href="http://www.fuwu.com/p/22380" target="_blank"><img alt="姜振营老师" src="http://resource.fuwucdn.com/static/www/topic/gk/images/jzy.jpg" width=194 height=130> </a></div>
+                            </li>
+                            <li class="featurebox">
+                                <div class="box"><a href="http://www.fuwu.com/p/16665" target="_blank"><img alt="史纪老师" src="http://resource.fuwucdn.com/static/www/topic/gk/images/sj.jpg" width=194 height=130> </a></div>
+                            </li>
+                            <li class="featurebox">
+                                <div class="box"><a href="#" target="_blank"><img alt=" " src="http://resource.fuwucdn.com/static/www/topic/gk/images/xbq.jpg" width=194 height=130> </a></div>
+                            </li>
+                            <li class="featurebox">
+                                <div class="box"><a href="http://www.fuwu.com/p/16653" target="_blank"><img alt="杨凤文老师" src="http://resource.fuwucdn.com/static/www/topic/gk/images/yfw.jpg" width=194 height=130> </a></div>
+                            </li>
+                            <li class="featurebox">
+                                <div class="box"><a href="http://www.fuwu.com/p/16668" target="_blank"><img alt="赵利剑老师" src="http://resource.fuwucdn.com/static/www/topic/gk/images/zlj.jpg" width=194 height=130> </a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a class="prev" href="javascript:void();">Previous</a>
+                <a class="next" href="javascript:void();">Next</a>
+            </div>
+        </div>
+
+        <!--滚动-->
+
+
+    </div>
+</div>
+<script language="JavaScript">
+    $(function () {
+        var urodz = new Date("6/7/2014");
+        var now = new Date();
+        var ile = urodz.getTime() - now.getTime();
+        var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
+        if (dni > 1)
+            $("#daycount").html(dni);
+    });
+</script>
+
+<!--中间内容部分结束-->
+
+
+
+
+

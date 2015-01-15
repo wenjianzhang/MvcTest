@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SpidersDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CollectionRulesTab">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CollectionName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SourceSiteTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SourceSiteName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BaseUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CollectionListRulesBig" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CollectionListRulesMin" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CollectionUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Contentleft" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Contentright" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Titleleft" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Titleright" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Imgleft" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Imgright" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NewPublishTimeLeft" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NewPublishTimeRight" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TypeNameLeft" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TypeNameRight" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Encoding" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsDel" Type="Int32" />
+  </EntityType>
+  <EntityType Name="NewsTab">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SourceSiteTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SourceSiteName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NewPublishTime" Type="DateTime" Precision="3" />
+    <Property Name="BaseUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ImgUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CollectionRulesTabs" EntityType="Self.CollectionRulesTab" />
+    <EntitySet Name="NewsTabs" EntityType="Self.NewsTab" />
+  </EntityContainer>
+</Schema>

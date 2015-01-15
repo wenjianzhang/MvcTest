@@ -1,0 +1,122 @@
+﻿@using MvcTest.Models;
+@using MvcTest.Extensions;
+@{
+    List<MenuInfo> MenuInfolistsF = new List<MenuInfo>();
+    List<MenuInfo> MenuInfolistsC = new List<MenuInfo>();
+    int roleid = -1;
+    try
+    {
+        roleid = (int)Extension.GetUserRoleID(this.User);
+    }
+    catch (Exception ex)
+    {
+        Response.Redirect("~/login");
+    }
+    using (var db = new ToolsDBEntities())
+    {
+
+        if (roleid != -1)
+        {
+            int[] RoleMenuPages = (from rmp in db.RoleMenuPages
+                                   where rmp.RID == roleid
+                                   select rmp.MIID ?? 0).ToArray();
+
+            MenuInfolistsC = db.MenuInfoes.Where(s => RoleMenuPages.Contains(s.MIID)).ToList();
+
+            MenuInfolistsF = db.MenuInfoes.Where(s => s.ParentId == 0).ToList();
+        }
+        else
+        {
+
+        }
+    }
+}
+<div id="sidebar">
+    <a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+    <ul>
+        @foreach (MenuInfo menuinfo in MenuInfolistsF.Where(s => s.ParentId == 0))
+        {
+            string currentExecutionFilePath = Request.CurrentExecutionFilePath.Split('/')[1].ToString();
+            var info = MenuInfolistsC.FirstOrDefault(s => s.Url.IndexOf(currentExecutionFilePath) != -1);
+            int i = (info) != null ? info.ParentId : -1;
+            if (MenuInfolistsC.Count() > 0)
+            {
+                if (menuinfo.MIID == i)
+                {
+                    <li class="submenu open">
+                        <a href="#"><i class="icon icon-file"></i> <span>@menuinfo.Name</span> <span class="label label-important"></span></a>
+                        <ul style="display: block;">
+                            @foreach (MenuInfo item in MenuInfolistsC.Where(s => s.ParentId == menuinfo.MIID))
+                            {
+                                <li><a href="@item.Url" onclick="OnloadMessage2()">@item.Name</a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="submenu ">
+                        <a href="#"><i class="icon icon-file"></i> <span>@menuinfo.Name</span> <span class="label label-important"></span></a>
+                        <ul>
+                            @foreach (MenuInfo item in MenuInfolistsC.Where(s => s.ParentId == menuinfo.MIID))
+                            {
+                                <li><a href="@item.Url" onclick="OnloadMessage2()">@item.Name</a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+        }
+        @*<li class="submenu active">
+                <a href="#"><i class="icon icon-file"></i> <span>基础信息管理</span> <span class="label label-important"></span></a>
+                <ul>
+                    <li><a href="/WebConfig/Index">网站信息</a></li>
+                    <li><a href="/Branch/Index">部门信息</a></li>
+                    <li><a href="/Manager/Index">人员信息</a></li>
+                    <li><a href="/MenuInfo/Index">菜单信息</a></li>
+                    <li><a href="/PagePowerSign/Index">菜单权限</a></li>
+                    <li><a href="/PagePowerSignPublic/Index">权限信息</a></li>
+                    <li><a href="/Position/Index">职位信息</a></li>
+                    <li><a href="/Role/Index">角色信息</a></li>
+                    <li><a href="/RoleManager/Index">人员角色</a></li>
+                    <li><a href="/RoleMenuPage/Index">人员角色菜单</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="#"><i class="icon icon-file"></i> <span>日志信息管理</span> <span class="label label-important"></span></a>
+                <ul>
+                    <li><a href="/LoginLog/Index">登录日志</a></li>
+                    <li><a href="/ErrorLog/Index">错误日志</a></li>
+                    <li><a href="/UseLog/Index">操作日志</a></li>
+                    <li><a href="/EmailSendHistory/Index">邮件记录</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="#"><i class="icon icon-info-sign"></i> <span>Error</span> <span class="label label-important">4</span></a>
+                <ul>
+                    <li><a href="error403.html">Error 403</a></li>
+                    <li><a href="error404.html">Error 404</a></li>
+                    <li><a href="error405.html">Error 405</a></li>
+                    <li><a href="error500.html">Error 500</a></li>
+                </ul>
+            </li>*@
+        <li class="content">
+            <span>Monthly Bandwidth Transfer</span>
+            <div class="progress progress-mini progress-danger active progress-striped">
+                <div style="width: 77%;" class="bar"></div>
+            </div>
+            <span class="percent">77%</span>
+            <div class="stat">21419.94 / 14000 MB</div>
+        </li>
+        <li class="content">
+            <span>Disk Space Usage</span>
+            <div class="progress progress-mini active progress-striped">
+                <div style="width: 87%;" class="bar"></div>
+            </div>
+            <span class="percent">87%</span>
+            <div class="stat">604.44 / 4000 MB</div>
+        </li>
+
+
+    </ul>
+</div>

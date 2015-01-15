@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MvcTest.Models.MenuInfo>
+@using MvcTest.Extensions;
+@using MvcTest.Models;
+@{
+    ViewBag.Title = "Index";
+    string[] EName = ViewBag.EName as string[];
+}
+
+@foreach (var item in Model)
+{
+    int shendu = int.Parse(ViewData["shendu"].ToString()) + 1;
+    string nbsp = "";
+    <tr class="gradeX">
+        <td>
+            @Html.CheckBox(item.MIID.ToString())
+        </td>
+        <td>
+            @for (int i = 0; i < shendu; i++)
+            {
+                nbsp = nbsp + "&nbsp; &nbsp; &nbsp; &nbsp;";
+            }
+            @MvcHtmlString.Create(nbsp)
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sort)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Depth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDisplay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsMenu)
+        </td>*@
+        <td>
+            @if (EName.Contains("Edit"))
+            {
+                @Html.ActionLink("修改", "Edit", new { id = item.MIID }, new { @class = "btn btn-primary btn-mini" })
+            }
+            
+            @if (EName.Contains("Details"))
+            {
+                @Html.ActionLink("详情", "Details", new { id = item.MIID }, new { @class = "btn btn-info btn-mini" })
+            }
+            
+            @if (EName.Contains("Delete"))
+            {
+                @*@Html.ActionLink("删除", "Delete", new { id = item.MIID }, new { @class = "btn btn-danger btn-mini" })*@
+                <a class="btn btn-danger btn-mini" href="javascript:void(0);" onclick="myconfirm(@item.MIID)">删除</a>
+            }
+            
+            @if (EName.Contains("SetAction"))
+            {
+                <a onclick="alertwindow('@item.Name','/MenuInfo/SetAction?id=@item.MIID')" class="btn btn-success btn-mini">设置动作</a>
+            }
+        </td>
+    </tr>
+            Html.RenderPartial("Partials/PartialTableCell", Model.Where(s => s.ParentId == item.MIID));
+}

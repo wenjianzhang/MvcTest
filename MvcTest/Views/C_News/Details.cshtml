@@ -1,0 +1,317 @@
+﻿@model MvcTest.Models.C_News
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@section HeadContent{
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/Content/css/colorpicker.css" />
+    <link rel="stylesheet" href="~/Content/css/datepicker.css" />
+    <link rel="stylesheet" href="~/Content/css/uniform.css" />
+    <link rel="stylesheet" href="~/Content/css/select2.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-media.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-wysihtml5.css" />
+    <link href="~/fonts/css/font-awesome.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+}
+
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">C_News</a> <a href="#" class="current">详情</a> </div>
+        @*<h1>Common Form Elements</h1>*@
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-align-justify"></i> </span>
+                        <h5>C_News</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+
+
+                        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+
+                            @Html.AntiForgeryToken()
+                            @*<div class="control-group">
+                                    @Html.LabelFor(model => model.NewsID, "唯一编号", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.NewsID, new { @class = "span8", placeholder = "唯一编号", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.NewsID)
+                                    </div>
+                                </div>*@
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.ChannelID, "频道", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.ChannelID, new { @class = "span4", placeholder = "频道", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.ChannelID)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.ClassID, "分类", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.ClassID, new { @class = "span4", placeholder = "分类", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.ClassID)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.OrderID, "新闻权重", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.OrderID, new { @class = "span4", placeholder = "新闻权重：1-50的数字。0 置顶。数字越小，权重越高", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.OrderID)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.NewsTitle, "标题", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.NewsTitle, new { @class = "span8", placeholder = "标题", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.NewsTitle)
+                                </div>
+                            </div>
+                            @*<div class="control-group">
+                                    @Html.LabelFor(model => model.SNewsTitle, "副标题", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.SNewsTitle, new { @class = "span8", placeholder = "副标题", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.SNewsTitle)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.TitleColor, "标题颜色", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.TitleColor, new { @class = "span8", placeholder = "标题颜色", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.TitleColor)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.TitleITF, "是否斜体", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.TitleITF, new { @class = "span8", placeholder = "是否斜体", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.TitleITF)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.TitleBIT, "是否粗体", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.TitleBIT, new { @class = "span8", placeholder = "是否粗体", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.TitleBIT)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.URLLaddress, "链接地址", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.URLLaddress, new { @class = "span8", placeholder = "链接地址", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.URLLaddress)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.PicURL, "图片地址（大）", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.PicURL, new { @class = "span8", placeholder = "图片地址（大）", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.PicURL)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.inPicURL, "图片地址（小）自动生成的", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.inPicURL, new { @class = "span8", placeholder = "图片地址（小）自动生成的", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.inPicURL)
+                                    </div>
+                                </div>*@
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Auther, "作者", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Auther, new { @class = "span8", placeholder = "作者", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.Auther)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Souce, "来源", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Souce, new { @class = "span8", placeholder = "来源", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.Souce)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Tags, "Tags多个用，分开", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Tags, new { @class = "span8", placeholder = "Tags多个用，分开", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.Tags)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.NewsProperty, "新闻属性", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.NewsProperty, new { @class = "span8", placeholder = "新闻属性   推荐、滚动、热点、幻灯、头条（头条可以直接生成图片头条）、公告、WAP、精彩   格式：0，1，1，0，1，0，0，1", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.NewsProperty)
+                                </div>
+                            </div>
+                            @*<div class="control-group">
+                                    @Html.LabelFor(model => model.NewsPicTopline, "是否图片头条", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.NewsPicTopline, new { @class = "span8", placeholder = "是否图片头条", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.NewsPicTopline)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Templet, "模板", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Templet, new { @class = "span8", placeholder = "模板", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.Templet)
+                                    </div>
+                                </div>*@
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Content, "内容", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Content, new { @class = "span8", placeholder = "内容", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.Content)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.MetaKeywords, "meta关键字", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.MetaKeywords, new { @class = "span8", placeholder = "meta关键字", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.MetaKeywords)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Metadesc, "meta描述", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Metadesc, new { @class = "span8", placeholder = "meta描述", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.Metadesc)
+                                </div>
+                            </div>
+                            @*<div class="control-group">
+                                    @Html.LabelFor(model => model.Click, "Click", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Click, new { @class = "span8", placeholder = "Click", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.Click)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.CreateTime, "CreateTime", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.CreateTime, new { @class = "span8", placeholder = "CreateTime", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.CreateTime)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.UpdateTime, "编辑时间", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.UpdateTime, new { @class = "span8", placeholder = "编辑时间", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.UpdateTime)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.SavePath, "保存路径", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.SavePath, new { @class = "span8", placeholder = "保存路径", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.SavePath)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.FileName, "文件名", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.FileName, new { @class = "span8", placeholder = "文件名", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.FileName)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.FileEXName, "扩展名", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.FileEXName, new { @class = "span8", placeholder = "扩展名", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.FileEXName)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.TopNum, "被顶次数", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.TopNum, new { @class = "span8", placeholder = "被顶次数", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.TopNum)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.IsLock, "是否锁定", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.IsLock, new { @class = "span8", placeholder = "是否锁定", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.IsLock)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.IsDel, "是否回收站", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.IsDel, new { @class = "span8", placeholder = "是否回收站", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.IsDel)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.DataLib, "使用数据库表", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.DataLib, new { @class = "span8", placeholder = "使用数据库表", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.DataLib)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.DefineID, "自定义数据编号", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.DefineID, new { @class = "span8", placeholder = "自定义数据编号", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.DefineID)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.IsHTML, "是否生成HTML", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.IsHTML, new { @class = "span8", placeholder = "是否生成HTML", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.IsHTML)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.CheckStat, "状态", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.CheckStat, new { @class = "span8", placeholder = "状态", @disabled = "" })
+                                        @Html.ValidationMessageFor(model => model.CheckStat)
+                                    </div>
+                                </div>*@
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Sorc, "排序", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Sorc, new { @class = "span8", placeholder = "排序", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.Sorc)
+                                </div>
+                            </div>
+
+                        }
+                        <div class="form-actions">
+
+                            @Html.ActionLink("返回", "Index", "WebConfig", new { @class = "btn btn-success" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section FootContent{
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/js/masked.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+
+    @*<script src="~/Scripts/js/matrix.form_common.js"></script>*@
+    <script src="~/Scripts/js/wysihtml5-0.3.0.js"></script>
+    <script src="~/Scripts/js/jquery.peity.min.js"></script>
+    <script src="~/Scripts/js/bootstrap-wysihtml5.js"></script>
+    <script>
+        $('.textarea_editor').wysihtml5();
+    </script>
+}

@@ -1,0 +1,314 @@
+﻿@model MvcTest.Models.ManagerR
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@section HeadContent{
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+    @*<link rel="stylesheet" href="~/Content/css/colorpicker.css" />*@
+    <link rel="stylesheet" href="~/Content/css/datepicker.css" />
+    <link rel="stylesheet" href="~/Content/css/uniform.css" />
+    <link rel="stylesheet" href="~/Content/css/select2.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-media.css" />
+    @*<link rel="stylesheet" href="~/Content/css/bootstrap-wysihtml5.css" />
+        <link href="~/fonts/css/font-awesome.css" rel="stylesheet" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>*@
+}
+
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">管理员表</a> <a href="#" class="current">修改</a> </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-align-justify"></i> </span>
+                        <h5>管理员表</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        @using (Html.BeginForm("Edit", "Manager", new { id = Model.MID }, FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            @Html.HiddenFor(model => model.MID)
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.LoginName, "登陆账号", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.LoginName, new { @class = "span4", placeholder = "登陆账号" })
+                                    @Html.ValidationMessageFor(model => model.LoginName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.LoginPass, "登陆密码", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.LoginPass, new { @class = "span4", placeholder = "登陆密码" })
+                                    @Html.ValidationMessageFor(model => model.LoginPass)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Branch_Id, "所属部门", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.DropDownListFor(model => model.Branch_Id, (ViewBag.Branchlist as List<SelectListItem>), new { @class = "span2" })
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Position_Id, "职位", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.DropDownListFor(model => model.Position_Id, (ViewBag.Positionlist as List<SelectListItem>), new { @class = "span2" })
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Enable, "是否启用", new { @class = "control-label" })
+                                <div class="controls">
+                                    <label style="float: left;">
+                                        @Html.RadioButtonFor(model => model.Enable, 1, new { placeholder = "账号是否启用，1=true(启用)，0=false（禁用） " })
+                                        启用
+                                    </label>
+                                    <label style="float: left;">
+                                        @Html.RadioButtonFor(model => model.Enable, 0, new { placeholder = "账号是否启用，1=true(启用)，0=false（禁用） " })
+                                        禁用
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.CName, "中文昵称", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.CName, new { @class = "span4", placeholder = "中文昵称" })
+                                    @Html.ValidationMessageFor(model => model.CName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.EName, "英文昵称", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.EName, new { @class = "span4", placeholder = "英文昵称" })
+                                    @Html.ValidationMessageFor(model => model.EName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.PhotoImg, "选择头像", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.HiddenFor(model => model.PhotoImg)
+                                    <input type="button" id="file_upload" value="选择" name="file_upload" onclick="openupload();" class="btn btn-success" />
+                                    <input type="button" id="file_upload_clear" value="清除" name="file_upload_clear" onclick="open_clear();" class="btn btn-success" /><div>
+                                        <div id="photo">
+                                            @if (!string.IsNullOrEmpty(Model.PhotoImg))
+                                            {
+                                                foreach (var item in Model.PhotoImg.Split(';'))
+                                                {
+                                                <img style="width: 150px; height:150px;" src="@(item.IndexOf("~") > -1 ? item.Replace("~", "").ToString() : "")" />
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="control-group">
+                                    @Html.LabelFor(model => model.PhotoImg, "头像图片路径", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.PhotoImg, new { @class = "span8", placeholder = "头像图片路径" })
+                                        @Html.ValidationMessageFor(model => model.PhotoImg)
+                                    </div>
+                                </div>*@
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Sex, "性别", new { @class = "control-label" })
+                                <div class="controls">
+                                    <label style="float: left;">
+                                        @Html.RadioButtonFor(model => model.Sex, 1, new { placeholder = "性别（0=未知，1=男，2=女）" })
+                                        男
+                                    </label>
+                                    <label style="float: left;">
+                                        @Html.RadioButtonFor(model => model.Sex, 2, new { placeholder = "性别（0=未知，1=男，2=女）" })
+                                        女
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Birthday, "出生年月", new { @class = "control-label" })
+                                <div class="controls ">
+                                    <div data-date="12-02-2012" class="input-append date datepicker">
+                                        @Html.TextBoxFor(model => model.Birthday, new { @class = "span6", placeholder = "出生年月" })
+                                        <span class="add-on"><i class="icon-th"></i></span>
+                                        @Html.ValidationMessageFor(model => model.Birthday)
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="control-group">
+                                @Html.LabelFor(model => model.NativePlace, "籍贯", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.NativePlace, new { @class = "span4", placeholder = "籍贯" })
+                                    @Html.ValidationMessageFor(model => model.NativePlace)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.NationalName, "民族", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.NationalName, new { @class = "span4", placeholder = "民族" })
+                                    @Html.ValidationMessageFor(model => model.NationalName)
+                                </div>
+                            </div>*@
+                            @*<div class="control-group">
+                                @Html.LabelFor(model => model.Record, "学历", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Record, new { @class = "span4", placeholder = "学历" })
+                                    @Html.ValidationMessageFor(model => model.Record)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.GraduateCollege, "毕业院校", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.GraduateCollege, new { @class = "span8", placeholder = "毕业院校" })
+                                    @Html.ValidationMessageFor(model => model.GraduateCollege)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.GraduateSpecialty, "专业", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.GraduateSpecialty, new { @class = "span4", placeholder = "专业" })
+                                    @Html.ValidationMessageFor(model => model.GraduateSpecialty)
+                                </div>
+                            </div>*@
+                            @*<div class="control-group">
+                                @Html.LabelFor(model => model.Tel, "电话", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Tel, new { @class = "span4", placeholder = "电话" })
+                                    @Html.ValidationMessageFor(model => model.Tel)
+                                </div>
+                            </div>*@
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Mobile, "手机", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Mobile, new { @class = "span4", placeholder = "手机" })
+                                    @Html.ValidationMessageFor(model => model.Mobile)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Email, "邮箱", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "span4", placeholder = "邮箱" })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+                            </div>
+                            @*<div class="control-group">
+                                @Html.LabelFor(model => model.Qq, "QQ", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Qq, new { @class = "span4", placeholder = "QQ" })
+                                    @Html.ValidationMessageFor(model => model.Qq)
+                                </div>
+                            </div>*@
+                            @*<div class="control-group">
+                                @Html.LabelFor(model => model.Msn, "Msn", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Msn, new { @class = "span4", placeholder = "Msn" })
+                                    @Html.ValidationMessageFor(model => model.Msn)
+                                </div>
+                            </div>*@
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Address, "地址", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "span8", placeholder = "地址" })
+                                    @Html.ValidationMessageFor(model => model.Address)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Content, "备注", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Content, new { @class = "span8", placeholder = "备注" })
+                                    @Html.ValidationMessageFor(model => model.Content)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">有权角色</label>
+                                <div class="controls">
+                                    @Html.ListBox("Rolelist", (ViewBag.RoleSS as IEnumerable<SelectListItem>), new { @multiple = "" })
+
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">有权用户</label>
+                                <div class="controls">
+                                    @Html.DropDownList("Managerlist", (ViewBag.ManagerSS as List<SelectListItem>), new { @multiple = "" })
+
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success">保存</button>
+                                @Html.ActionLink("返回", "Index", "WebConfig", new { @class = "btn btn-success" })
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section FootContent{
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/js/bootstrap-datepicker.js"></script>*@
+    <script src="~/Scripts/js/masked.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+    <script src="~/Scripts/js/matrix.form_common.js"></script>
+    @*<script src="~/Scripts/js/wysihtml5-0.3.0.js"></script>*@
+    <script src="~/Scripts/js/jquery.peity.min.js"></script>
+    @*<script src="~/Scripts/js/bootstrap-wysihtml5.js"></script>*@
+    <script src="~/Scripts/layer/layer.min.js"></script>
+    <script>
+        //$('.textarea_editor').wysihtml5();
+        function open_clear() {
+            $("#PhotoImg").val("");
+            $("#photo").html("");
+            layer.alert('清除成功', 11, 1);
+        }
+
+        function myfunction(name, oldname) {
+            var str = " <img  style=\"width: 50px; height: 50px;\" src=\"" + name.replace("~", "") + "\" />";
+            $("#photo").append(str);
+            $("#PhotoImg").val($("#inPicURL").val() == "" ? name : $("#inPicURL").val() + ";" + name);
+            layer.alert(oldname + '文件保存成功', 11, 1);
+        }
+
+        function openupload() {
+            $.layer({
+                type: 2,
+                closeBtn: true,
+                shadeClose: true,
+                shade: [0.1, '#fff'],
+                iframe: {
+                    src: '/Upload/Index'
+                },
+                title: false,
+                area: ['500px', '300px'],
+                success: function () {
+                    layer.shift('right-bottom', 500);
+                }, end: function () {
+                    //$.layer({
+                    //    type: 2,
+                    //    offset: ['50px', ''],
+                    //    title: '贤心博客 - sentsin.com',
+                    //    shadeClose: true,
+                    //    maxmin: true,
+                    //    iframe: {
+                    //        src: 'http://sentsin.com/'
+                    //    },
+                    //    fix: false,
+                    //    area: ['1024px', ($(window).height() - 110) + 'px']
+                    //});
+                }
+            });
+        }
+
+    </script>
+}

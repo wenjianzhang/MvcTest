@@ -1,0 +1,172 @@
+﻿@model MvcTest.Models.ManagerR
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-login.css" />
+    @*<link href="~/fonts/css/font-awesome.css" rel="stylesheet" />*@
+</head>
+<body>
+    <div id="loginbox">
+        @using (Ajax.BeginForm("Logins", "Login", new { }, new AjaxOptions { OnSuccess = "RedirectToPage", OnBegin = "OnloadMessage", Url = "/Login/Logins" }, new { @id = "loginform", @class = "form-vertical" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="control-group normal_text"> <h3><img src="~/Content/img/logo.png" alt="Logo" /></h3></div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on bg_lg"><i class="icon-user"></i></span>
+                        @Html.TextBoxFor(model => model.LoginName, new { @placeholder = "Username", @type = "text" })
+                        @*<input type="text" placeholder="Username" />*@
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on bg_ly"><i class="icon-lock"></i></span>
+                        @Html.TextBoxFor(model => model.LoginPass, new { @placeholder = "Password", @type = "password" })
+                        @*<input type="password" placeholder="Password" />*@
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        @*<span class="add-on bg_dg"><i class="icon-calendar"></i></span>*@
+                        <script async type="text/javascript" src="http://api.geetest.com/get.php?gt=c9b953bd40c12fedae2f68e11a3478f5&product=embed"></script>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">Lost password?</a></span>
+                <span class="pull-right"><input type="submit" class="btn btn-success" value="Login" /> </span>
+            </div>
+        }
+
+        @using (Ajax.BeginForm("Retrievepassword", "Login", new { }, new AjaxOptions { OnSuccess = "SendMessage" }, new { @id = "recoverform", @class = "form-vertical" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <p class="normal_text">下面输入您的电子邮件地址,我们将给你发送指令如何恢复密码。</p>
+
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_lo"><i class="icon-envelope"></i></span>
+                    @*<input type="text" placeholder="电子邮箱" />*@
+                    @Html.TextBoxFor(model => model.Email, new { @placeholder = "电子邮箱", @type = "text" })
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; 登录</a></span>
+                <span class="pull-right"><input type="submit" class="btn btn-info" value="发送" /></span>
+            </div>
+        }
+    </div>
+
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/matrix.login.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="~/Scripts/layer/layer.min.js"></script>
+    <script>
+        function OnloadMessage() {
+            var geetest_challenge = $(".geetest_challenge").val();
+            var geetest_validate = $(".geetest_validate").val();
+            var geetest_seccode = $(".geetest_seccode").val();
+            if (geetest_challenge == '' && geetest_validate == '' && geetest_seccode == '') {
+                layer.msg("请先完成验证");
+                return false;
+            }
+            //var message = {};
+            //message.bl = true;
+            //message.msg = '';
+            //message.type = 0;
+            //var aj = $.ajax({
+            //    async: false,
+            //    url: 'VerificationCode',// 跳转到 action
+            //    data: {
+            //        geetest_challenge: geetest_challenge,
+            //        geetest_validate: geetest_validate,
+            //        geetest_seccode: geetest_seccode,
+            //    },
+            //    type: 'post',
+            //    cache: false,
+            //    dataType: 'text',
+            //    success: function (data) {
+            //        if (data == "OK") {
+            //            message.msg = "正在验证！";
+            //            message.type = 1;
+            //        } else {
+            //            message.bl = false;
+            //            message.msg = "验证码错误！";
+            //        }
+            //    }
+            //    //,
+            //    //error: function () {
+            //    //    message.bl = false;
+            //    //    message.msg = "异常！";
+            //    //}
+            //});
+            //if (message.bl) {
+            //    if (message.type == 0)
+            //        layer.msg(message.msg);
+            //    else
+            //        layer.load(message.msg, 0);
+            //    return true;
+            //}
+            //else {
+            //    layer.msg(message.msg);
+            //    return false;
+            //}
+
+        };
+
+
+
+        function RedirectToPage(e) {
+            if (e.toString() == "OK") {
+                layer.load("验证成功，正在跳转", 0);
+                window.location.href = "/Home/Index";
+            }
+            else if (e.toString() == "NO") {
+                layer.msg('帐号或密码错误', 2, function () {
+                    //location.reload(); //自动关闭后可做一些刷新页面等操作
+                    $("#LoginName").val("");
+                    $("#LoginPass").val("");
+                });
+            }
+            else if (e.toString() == "请选择验证码") {
+                layer.msg('请选择验证码！', 2, function () {
+                    //location.reload(); //自动关闭后可做一些刷新页面等操作
+                });
+            }
+            else if (e.toString() == "验证码错误") {
+                layer.msg('验证码错误！', 2, function () {
+                    //location.reload(); //自动关闭后可做一些刷新页面等操作
+                });
+            }
+        }
+        function SendMessage(e) {
+            if (e.toString() == "OK") {
+                layer.msg("发送成功，请注意查收！");
+            }
+            else if (e.toString() == "NO") {
+
+                layer.msg('发送失败', 2, function () {
+                    location.reload(); //自动关闭后可做一些刷新页面等操作
+                });
+            }
+        }
+    </script>
+</body>
+</html>

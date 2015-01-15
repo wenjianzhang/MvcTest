@@ -1,0 +1,132 @@
+﻿@model MvcTest.Models.Branch
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@section HeadContent{
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+    @*<link rel="stylesheet" href="~/Content/css/colorpicker.css" />
+    <link rel="stylesheet" href="~/Content/css/datepicker.css" />*@
+    <link rel="stylesheet" href="~/Content/css/uniform.css" />
+    <link rel="stylesheet" href="~/Content/css/select2.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-media.css" />
+    @*<link rel="stylesheet" href="~/Content/css/bootstrap-wysihtml5.css" />
+    <link href="~/fonts/css/font-awesome.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>*@
+}
+
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">部门表</a> <a href="#" class="current">删除</a> </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-align-justify"></i> </span>
+                        <h5>部门表</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        @using (Html.BeginForm("Delete", "Branch", new { id = Model.BID }, FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+
+                            @Html.AntiForgeryToken()
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Code, "部门ID", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Code, new { @class = "span8", placeholder = "部门ID" })
+                                    @Html.ValidationMessageFor(model => model.Code)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Name, "部门名称", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "span8", placeholder = "部门名称" })
+                                    @Html.ValidationMessageFor(model => model.Name)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Notes, "备注", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Notes, new { @class = "span8", placeholder = "备注" })
+                                    @Html.ValidationMessageFor(model => model.Notes)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.ParentId, "父ID", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.ParentId, new { @class = "span8", placeholder = "父ID" })
+                                    @Html.ValidationMessageFor(model => model.ParentId)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Sort, "排序", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Sort, new { @class = "span8", placeholder = "排序" })
+                                    @Html.ValidationMessageFor(model => model.Sort)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Depth, "深度", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Depth, new { @class = "span8", placeholder = "深度" })
+                                    @Html.ValidationMessageFor(model => model.Depth)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Manager_Id, "修改人员id", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Manager_Id, new { @class = "span8", placeholder = "修改人员id" })
+                                    @Html.ValidationMessageFor(model => model.Manager_Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Manager_CName, "修改人员姓名", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Manager_CName, new { @class = "span8", placeholder = "修改人员姓名" })
+                                    @Html.ValidationMessageFor(model => model.Manager_CName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.UpdateDate, "修改时间", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.UpdateDate, new { @class = "span8", placeholder = "修改时间" })
+                                    @Html.ValidationMessageFor(model => model.UpdateDate)
+                                </div>
+                            </div>
+                            <div class="form-actions no-color">
+                                <input type="submit" value="删除" class="btn btn-default" /> |
+                                @Html.ActionLink("返回", "Index", "WebConfig", new { @class = "btn btn-success" })
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section FootContent{
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/js/bootstrap-datepicker.js"></script>*@
+    <script src="~/Scripts/js/masked.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+
+    @*<script src="~/Scripts/js/matrix.form_common.js"></script>*@
+    @*<script src="~/Scripts/js/wysihtml5-0.3.0.js"></script>*@
+    <script src="~/Scripts/js/jquery.peity.min.js"></script>
+    @*<script src="~/Scripts/js/bootstrap-wysihtml5.js"></script>
+    <script>
+        $('.textarea_editor').wysihtml5();
+    </script>*@
+}

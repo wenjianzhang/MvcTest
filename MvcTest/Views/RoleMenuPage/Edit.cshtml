@@ -1,0 +1,94 @@
+﻿
+@model MvcTest.Models.RoleMenuPage
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@section HeadContent{
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/Content/css/colorpicker.css" />
+    <link rel="stylesheet" href="~/Content/css/datepicker.css" />
+    <link rel="stylesheet" href="~/Content/css/uniform.css" />
+    <link rel="stylesheet" href="~/Content/css/select2.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-media.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-wysihtml5.css" />
+    <link href="~/fonts/css/font-awesome.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+}
+
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">角色菜单页面权限表</a> <a href="#" class="current">修改</a> </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-align-justify"></i> </span>
+                        <h5>角色菜单页面权限表</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                    								                    @using (Html.BeginForm("Edit", "RoleMenuPage", new { id = Model.id }, FormMethod.Post, new { @class = "form-horizontal" }))
+                                         								                    								                    								                                        
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            
+                            
+                            										                            															         <div class="control-group">
+                                @Html.LabelFor(model => model.MIID, "MIID", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.MIID, new { @class = "span8", placeholder = "MIID" })
+                                    @Html.ValidationMessageFor(model => model.MIID)
+                                </div>
+                            </div>
+								                            															         <div class="control-group">
+                                @Html.LabelFor(model => model.PPSID, "PPSID", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.PPSID, new { @class = "span8", placeholder = "PPSID" })
+                                    @Html.ValidationMessageFor(model => model.PPSID)
+                                </div>
+                            </div>
+								                            															         <div class="control-group">
+                                @Html.LabelFor(model => model.RID, "RID", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.RID, new { @class = "span8", placeholder = "RID" })
+                                    @Html.ValidationMessageFor(model => model.RID)
+                                </div>
+                            </div>
+								                                                        <div class="form-actions">
+                                <button type="submit" class="btn btn-success">保存</button>
+                                @Html.ActionLink("返回", "Index", "WebConfig", new { @class = "btn btn-success" })
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section FootContent{
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/js/masked.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+
+    @*<script src="~/Scripts/js/matrix.form_common.js"></script>*@
+    <script src="~/Scripts/js/wysihtml5-0.3.0.js"></script>
+    <script src="~/Scripts/js/jquery.peity.min.js"></script>
+    <script src="~/Scripts/js/bootstrap-wysihtml5.js"></script>
+    <script>
+        $('.textarea_editor').wysihtml5();
+    </script>
+}

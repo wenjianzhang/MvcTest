@@ -1,0 +1,102 @@
+﻿@model IEnumerable<MvcTest.Models.MenuInfo>
+@{
+    Layout = null;
+}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="~/Content/css/uniform.css" />
+<link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+<link href="fonts/css/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/costum.css" rel="stylesheet" />
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<div class="widget-box">
+    <div class="widget-content nopadding">
+        @using (Ajax.BeginForm("UpdateMenuInfoTableActions", "Role", new { rid = ViewBag.setRID }, new AjaxOptions { OnSuccess = "CloseWindow", HttpMethod = "Post", UpdateTargetId = "aaa" }, new { @class = "form-horizontal" }))
+        {
+            <div class=" widget-box nopadding">
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered table-striped with-check">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="title-checkbox" name="title-checkbox" /></th>
+
+                                <th>
+                                    名称
+                                </th>
+
+                                <th>
+                                    URL
+                                </th>
+                                <th>
+                                    已有动作
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Where(s => s.ParentId == 0))
+                            {
+                                <tr class="gradeX">
+                                    <td>@Html.CheckBox(item.MIID.ToString())</td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Url)
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                ViewData["shendu"] = 0;
+
+                                Html.RenderPartial("Partials/PartialTableCell", Model.Where(s => s.ParentId == item.MIID));
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" onsubmit="CloseWindow();" class="btn btn-success">Save</button>
+            </div>
+        }
+        <div id="aaa"></div>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/js/jquery.min.js"></script>
+<script src="~/Scripts/js/jquery.ui.custom.js"></script>
+<script src="~/Scripts/js/bootstrap.min.js"></script>
+<script src="~/Scripts/js/jquery.uniform.js"></script>
+<script src="~/Scripts/js/select2.min.js"></script>
+<script src="~/Scripts/js/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/js/matrix.js"></script>
+<script src="~/Scripts/js/matrix.tables.js"></script>
+<script src="~/Scripts/layer/layer.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script type="text/ecmascript">
+ var index = parent.layer.getFrameIndex(window.name);
+    function CloseWindow(e) {
+        if (e.toString() == "OK") {
+            //layer.msg('修改成功！',2,-1);
+
+            parent.layer.close(index);
+        }
+    }
+    function alertwindowaction(rolename, url) {
+        $.layer({
+            type: 2,
+            title: '当前配置【@ViewBag.setRNname】角色的权限',
+            iframe: { src: url },
+            maxmin: false,
+            area: ['500px']
+            //offset: ['100px', '']
+        });
+    }
+</script>

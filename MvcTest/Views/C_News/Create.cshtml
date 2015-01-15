@@ -1,0 +1,356 @@
+﻿@model MvcTest.Models.C_NewsR
+
+@{
+    ViewBag.Title = "发布内容";
+}
+@section HeadContent{
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+    @*<link rel="stylesheet" href="~/Content/css/colorpicker.css" />*@
+    <link rel="stylesheet" href="~/Content/css/datepicker.css" />
+    <link rel="stylesheet" href="~/Content/css/uniform.css" />
+    <link rel="stylesheet" href="~/Content/css/select2.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-media.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-wysihtml5.css" />
+    <link href="~/Scripts/ueditor/themes/default/css/ueditor.min.css" rel="stylesheet" />
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">C_News</a> <a href="#" class="current">新建</a> </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-align-justify"></i> </span>
+                        <h5>C_News</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        @using (Html.BeginForm("Create", "C_News", FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.ChannelID, "频道", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.DropDownListFor(model => model.ChannelID, (ViewBag.C_Channellist as List<SelectListItem>), new { @class = "span4" })
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.ClassID, "栏目", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.DropDownListFor(model => model.ClassID, (ViewBag.C_Classllist as List<SelectListItem>), new { @class = "span4" })
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.OrderID, "新闻权重", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.OrderID, new { @class = "span4", placeholder = "1-50的数字。0 置顶。数字越小，权重越高" })
+                                    @Html.ValidationMessageFor(model => model.OrderID)
+                                    <span class="help-block">1-50的数字。0 置顶。数字越小，权重越高</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.NewsTitle, "标题", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.NewsTitle, new { @class = "span8", placeholder = "标题" })
+                                    @Html.ValidationMessageFor(model => model.NewsTitle)
+                                </div>
+                            </div>
+                            @*<div class="control-group">
+                                    @Html.LabelFor(model => model.SNewsTitle, "副标题", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.SNewsTitle, new { @class = "span8", placeholder = "副标题" })
+                                        @Html.ValidationMessageFor(model => model.SNewsTitle)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.TitleColor, "标题颜色", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.TitleColor, new { @class = "span8", placeholder = "标题颜色" })
+                                        @Html.ValidationMessageFor(model => model.TitleColor)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.TitleITF, "是否斜体", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.TitleITF, new { @class = "span8", placeholder = "是否斜体" })
+                                        @Html.ValidationMessageFor(model => model.TitleITF)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.TitleBIT, "是否粗体", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.TitleBIT, new { @class = "span8", placeholder = "是否粗体" })
+                                        @Html.ValidationMessageFor(model => model.TitleBIT)
+                                    </div>
+                                </div>*@
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.URLLaddress, "链接地址", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.URLLaddress, new { @class = "span8", placeholder = "链接地址" })
+                                    @Html.ValidationMessageFor(model => model.URLLaddress)
+                                </div>
+                            </div>
+                            @* <div class="control-group">
+                                    @Html.LabelFor(model => model.PicURL, "图片地址（大）", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.PicURL, new { @class = "span8", placeholder = "图片地址（大）" })
+                                        @Html.ValidationMessageFor(model => model.PicURL)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.inPicURL, "图片地址（小）自动生成的", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.inPicURL, new { @class = "span8", placeholder = "图片地址（小）自动生成的" })
+                                        @Html.ValidationMessageFor(model => model.inPicURL)
+                                    </div>
+                                </div>*@
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Auther, "作者", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Auther, new { @class = "span8", placeholder = "作者" })
+                                    @Html.ValidationMessageFor(model => model.Auther)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Souce, "来源", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Souce, new { @class = "span8", placeholder = "来源" })
+                                    @Html.ValidationMessageFor(model => model.Souce)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Tags, "Tags", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Tags, new { @class = "span8", placeholder = "文章提交的时间系统会自动匹配Tags", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.Tags)
+                                    <span class="help-block">多个用，分开</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.NewsProperty, "新闻属性", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.NewsProperty, new { @class = "span8", placeholder = "推荐、滚动、热点、幻灯、头条（头条可以直接生成图片头条）、公告、WAP、精彩   格式：0，1，1，0，1，0，0，1" })
+                                    @Html.ValidationMessageFor(model => model.NewsProperty)
+                                    <span class="help-block">推荐、滚动、热点、幻灯、头条（头条可以直接生成图片头条）、公告、WAP、精彩   格式：0，1，1，0，1，0，0，1</span>
+                                </div>
+                            </div>
+                            @*<div class="control-group">
+                                    @Html.LabelFor(model => model.NewsPicTopline, "是否图片头条", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.NewsPicTopline, new { @class = "span8", placeholder = "是否图片头条" })
+                                        @Html.ValidationMessageFor(model => model.NewsPicTopline)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Templet, "模板", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Templet, new { @class = "span8", placeholder = "模板" })
+                                        @Html.ValidationMessageFor(model => model.Templet)
+                                    </div>
+                                </div>*@
+                            @*<div class="control-group">
+                                    @Html.LabelFor(model => model.Content, "内容", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextAreaFor(model => model.Content, new { @class = "textarea_editor span8", placeholder = "内容", @rows = "6" })
+                                        @Html.ValidationMessageFor(model => model.Content)
+                                    </div>
+                                </div>*@
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Content, "内容", new { @class = "control-label" })
+                                <div class="controls">
+                                    <script type="text/plain" id="editor" style="width:95%;height:240px;">
+                                        <p>这里我可以写一些输入提示</p>
+                                    </script>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.MetaKeywords, "meta关键字", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.MetaKeywords, new { @class = "span8", placeholder = "meta关键字" })
+                                    @Html.ValidationMessageFor(model => model.MetaKeywords)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Metadesc, "meta描述", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextAreaFor(model => model.Metadesc, new { @class = "span8", placeholder = "meta描述" })
+                                    @Html.ValidationMessageFor(model => model.Metadesc)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Sorc, "排序", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Sorc, new { @class = "span4", placeholder = "排序", Value = "9999" })
+                                    @Html.ValidationMessageFor(model => model.Sorc)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.PublicTime, "发布时间", new { @class = "control-label" })
+                                <div class="controls">
+                                    <div data-date="12-02-2012" class="input-append date datepicker">
+                                        @Html.TextBoxFor(model => model.PublicTime, new { @class = "span8", placeholder = "发布时间", @value = DateTime.Now.ToString("MM-dd-yyyy") })
+                                        <span class="add-on"><i class="icon-th"></i></span>
+                                        @Html.ValidationMessageFor(model => model.PublicTime)
+                                    </div>
+                                </div>
+                            </div>
+                            @*<input type="text" value="12-02-2012" class="span11">*@
+
+                            @*<div class="control-group">
+                                    @Html.LabelFor(model => model.Click, "Click", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Click, new { @class = "span8", placeholder = "Click" })
+                                        @Html.ValidationMessageFor(model => model.Click)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.CreateTime, "CreateTime", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.CreateTime, new { @class = "span8", placeholder = "CreateTime" })
+                                        @Html.ValidationMessageFor(model => model.CreateTime)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.UpdateTime, "编辑时间", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.UpdateTime, new { @class = "span8", placeholder = "编辑时间" })
+                                        @Html.ValidationMessageFor(model => model.UpdateTime)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.SavePath, "保存路径", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.SavePath, new { @class = "span8", placeholder = "保存路径" })
+                                        @Html.ValidationMessageFor(model => model.SavePath)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.FileName, "文件名", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.FileName, new { @class = "span8", placeholder = "文件名" })
+                                        @Html.ValidationMessageFor(model => model.FileName)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.FileEXName, "扩展名", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.FileEXName, new { @class = "span8", placeholder = "扩展名" })
+                                        @Html.ValidationMessageFor(model => model.FileEXName)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.TopNum, "被顶次数", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.TopNum, new { @class = "span8", placeholder = "被顶次数" })
+                                        @Html.ValidationMessageFor(model => model.TopNum)
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.DataLib, "使用数据库表", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.DataLib, new { @class = "span8", placeholder = "使用数据库表" })
+                                        @Html.ValidationMessageFor(model => model.DataLib)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.DefineID, "自定义数据编号", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.DefineID, new { @class = "span8", placeholder = "自定义数据编号" })
+                                        @Html.ValidationMessageFor(model => model.DefineID)
+                                    </div>
+                                </div>*@
+                            <div class="control-group">
+                                <label class="control-label">有权角色</label>
+                                <div class="controls">
+                                    @Html.ListBox("Rolelist", (ViewBag.RoleSS as IEnumerable<SelectListItem>), new { @multiple = "" })
+
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">有权用户</label>
+                                <div class="controls">
+                                    @Html.DropDownList("Managerlist", (ViewBag.ManagerSS as List<SelectListItem>), new { @multiple = "" })
+
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success" onclick="OnloadMessage1()">保存</button>
+                                @Html.ActionLink("返回", "Index", "C_News", new { @class = "btn btn-success", @onclick = "OnloadMessage2()" })
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section FootContent{
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/js/masked.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+
+    <script src="~/Scripts/js/matrix.form_common.js"></script>
+    <script src="~/Scripts/js/wysihtml5-0.3.0.js"></script>
+    <script src="~/Scripts/js/jquery.peity.min.js"></script>
+    <script src="~/Scripts/js/bootstrap-wysihtml5.js"></script>
+    @*<script type="text/javascript" charset="utf-8" src="~/Scripts/umeditor1_2_2-utf8-net/umeditor.config.js"></script>
+        <script type="text/javascript" charset="utf-8" src="~/Scripts/umeditor1_2_2-utf8-net/umeditor.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/umeditor1_2_2-utf8-net/lang/zh-cn/zh-cn.js"></script>*@
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/ueditor/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/ueditor/lang/zh-cn/zh-cn.js"></script>
+    @*<script src="~/Scripts/layer/layer.min.js"></script>*@
+    <script type="text/javascript">
+        $(function () {
+            //实例化编辑器
+            var ue = UE.getEditor('editor');
+
+            //var um = UM.getEditor('myEditor');
+            //um.addListener('blur', function () {
+            //    $('#focush2').html('编辑器失去焦点了')
+            //});
+            //um.addListener('focus', function () {
+            //    $('#focush2').html('')
+            //});
+        });
+        $("#ChannelID").change(function () {
+            // alert($("#ChannelID").val());
+            $("#ClassID").empty();
+            $.ajax({
+                type: "post", url: "GetC_Class", dataType: "json", data: { id: $("#ChannelID").val() }, success: function (data) {
+                    $.each(data, function (i, item) {
+                        $("<option></option>").val(item["Value"]).text(item["Text"]).appendTo($("#ClassID"));
+
+                    });
+                }
+            });
+        });
+
+
+
+        //function OnloadMessage1() {
+        //    layer.load("正在提交", 1);
+        //}
+        //function OnloadMessage2() {
+        //    layer.load("正在跳转", 1);
+        //}
+    </script>
+}

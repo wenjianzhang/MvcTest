@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ToolsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ToolsDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Branches" EntityType="ToolsDBModel.Branch" />
+    <EntitySet Name="C_Class" EntityType="ToolsDBModel.C_Class" />
+    <EntitySet Name="EmailSendHistories" EntityType="ToolsDBModel.EmailSendHistory" />
+    <EntitySet Name="ErrorLogs" EntityType="ToolsDBModel.ErrorLog" />
+    <EntitySet Name="LoginLogs" EntityType="ToolsDBModel.LoginLog" />
+    <EntitySet Name="Managers" EntityType="ToolsDBModel.Manager" />
+    <EntitySet Name="MenuInfoes" EntityType="ToolsDBModel.MenuInfo" />
+    <EntitySet Name="PagePowerSigns" EntityType="ToolsDBModel.PagePowerSign" />
+    <EntitySet Name="PagePowerSignPublics" EntityType="ToolsDBModel.PagePowerSignPublic" />
+    <EntitySet Name="Positions" EntityType="ToolsDBModel.Position" />
+    <EntitySet Name="Roles" EntityType="ToolsDBModel.Role" />
+    <EntitySet Name="RoleManagers" EntityType="ToolsDBModel.RoleManager" />
+    <EntitySet Name="RoleMenuPages" EntityType="ToolsDBModel.RoleMenuPage" />
+    <EntitySet Name="sysdiagrams" EntityType="ToolsDBModel.sysdiagram" />
+    <EntitySet Name="UseLogs" EntityType="ToolsDBModel.UseLog" />
+    <EntitySet Name="WebConfigs" EntityType="ToolsDBModel.WebConfig" />
+    <AssociationSet Name="FK_PAGEPOWE_REFERENCE_MENUINFO" Association="ToolsDBModel.FK_PAGEPOWE_REFERENCE_MENUINFO">
+      <End Role="MenuInfo" EntitySet="MenuInfoes" />
+      <End Role="PagePowerSign" EntitySet="PagePowerSigns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAGEPOWE_REFERENCE_PAGEPOWE" Association="ToolsDBModel.FK_PAGEPOWE_REFERENCE_PAGEPOWE">
+      <End Role="PagePowerSignPublic" EntitySet="PagePowerSignPublics" />
+      <End Role="PagePowerSign" EntitySet="PagePowerSigns" />
+    </AssociationSet>
+    <EntitySet Name="MasterDatas" EntityType="ToolsDBModel.MasterData" />
+    <EntitySet Name="C_News" EntityType="ToolsDBModel.C_News" />
+    <AssociationSet Name="FK_C_NEWS_REFERENCE_C_CLASS" Association="ToolsDBModel.FK_C_NEWS_REFERENCE_C_CLASS">
+      <End Role="C_Class" EntitySet="C_Class" />
+      <End Role="C_News" EntitySet="C_News" />
+    </AssociationSet>
+    <EntitySet Name="C_Channel" EntityType="ToolsDBModel.C_Channel" />
+    <EntitySet Name="ThirdUsers" EntityType="ToolsDBModel.ThirdUser" />
+    <EntitySet Name="Users" EntityType="ToolsDBModel.User" />
+  </EntityContainer>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="BID" />
+    </Key>
+    <Property Name="BID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="Depth" Type="Int32" Nullable="false" />
+    <Property Name="Manager_Id" Type="Int32" Nullable="false" />
+    <Property Name="Manager_CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsDel" Type="Int32" />
+  </EntityType>
+  <EntityType Name="C_Class">
+    <Key>
+      <PropertyRef Name="ClassID" />
+    </Key>
+    <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="ClassName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ClassEName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PCID" Type="Int32" Nullable="false" />
+    <Property Name="IsOutClass" Type="Int32" />
+    <Property Name="OutClassUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Sort" Type="Int32" />
+    <Property Name="BindDomain" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ClassModel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Saveurl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ClassFile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Review" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Namerules" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PageIndex" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NewsSaveurl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NewsLookName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ImageUploadurl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PublicTime" Type="DateTime" Precision="3" />
+    <Property Name="ClassDataTable" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChannelID" Type="Int32" Nullable="false" />
+    <Property Name="IsMenuShow" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MenuImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MenuTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MetaKeyword" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MetaDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SCFileEXT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsLock" Type="Int32" />
+    <Property Name="IsDel" Type="Int32" />
+    <Property Name="CustomCode" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="IsPage" Type="Int32" />
+    <Property Name="IsHtml" Type="Int32" />
+    <NavigationProperty Name="C_News" Relationship="ToolsDBModel.FK_C_NEWS_REFERENCE_C_CLASS" FromRole="C_Class" ToRole="C_News" />
+  </EntityType>
+  <EntityType Name="EmailSendHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SendUsers_Id" Type="Int32" Nullable="false" />
+    <Property Name="SendUsers_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SendUsers_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RecUsers_Id" Type="Int32" Nullable="false" />
+    <Property Name="RecUsers_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RecUsers_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RecUserLevel_Id" Type="Int32" Nullable="false" />
+    <Property Name="RecUserLevel_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EmailSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SendDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Byte" />
+    <Property Name="StatusName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ErrorMsg" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Template_Id" Type="Int32" />
+    <Property Name="Template_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ErrTime" Type="DateTime" Precision="3" />
+    <Property Name="BrowserVersion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BrowserType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Ip" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PageUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ErrMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ErrSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HelpLink" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Byte" />
+    <Property Name="IsDel" Type="Int32" />
+  </EntityType>
+  <EntityType Name="LoginLog">
+    <Key>
+      <PropertyRef Name="LoginLogID" />
+    </Key>
+    <Property Name="LoginLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Manager_Id" Type="Int32" Nullable="false" />
+    <Property Name="Manager_CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Ip" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Int32" />
+    <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Manager">
+    <Key>
+      <PropertyRef Name="MID" />
+    </Key>
+    <Property Name="MID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LoginPass" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="LoginTime" Type="DateTime" Precision="3" />
+    <Property Name="LoginIp" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LoginCount" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Branch_Id" Type="Int32" Nullable="false" />
+    <Property Name="Branch_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Branch_Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Position_Id" Type="Int32" Nullable="false" />
+    <Property Name="Position_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Enable" Type="Byte" Nullable="false" />
+    <Property Name="CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhotoImg" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NativePlace" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NationalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Record" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="GraduateCollege" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="GraduateSpecialty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Qq" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Msn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Manager_Id" Type="Int32" Nullable="false" />
+    <Property Name="Manager_CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MenuInfo">
+    <Key>
+      <PropertyRef Name="MIID" />
+    </Key>
+    <Property Name="MIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="Depth" Type="Int32" Nullable="false" />
+    <Property Name="IsDisplay" Type="Byte" Nullable="false" />
+    <Property Name="IsMenu" Type="Byte" Nullable="false" />
+    <Property Name="IsDel" Type="Int32" />
+    <NavigationProperty Name="PagePowerSigns" Relationship="ToolsDBModel.FK_PAGEPOWE_REFERENCE_MENUINFO" FromRole="MenuInfo" ToRole="PagePowerSign" />
+  </EntityType>
+  <EntityType Name="PagePowerSign">
+    <Key>
+      <PropertyRef Name="PPSID" />
+    </Key>
+    <Property Name="PPSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MIID" Type="Int32" />
+    <Property Name="PPSPID" Type="Int32" />
+    <Property Name="CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MenuInfo" Relationship="ToolsDBModel.FK_PAGEPOWE_REFERENCE_MENUINFO" FromRole="PagePowerSign" ToRole="MenuInfo" />
+    <NavigationProperty Name="PagePowerSignPublic" Relationship="ToolsDBModel.FK_PAGEPOWE_REFERENCE_PAGEPOWE" FromRole="PagePowerSign" ToRole="PagePowerSignPublic" />
+  </EntityType>
+  <EntityType Name="PagePowerSignPublic">
+    <Key>
+      <PropertyRef Name="PPSPID" />
+    </Key>
+    <Property Name="PPSPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StyleClass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Int32" />
+    <NavigationProperty Name="PagePowerSigns" Relationship="ToolsDBModel.FK_PAGEPOWE_REFERENCE_PAGEPOWE" FromRole="PagePowerSignPublic" ToRole="PagePowerSign" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="PID" />
+    </Key>
+    <Property Name="PID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Branch_Id" Type="Int32" Nullable="false" />
+    <Property Name="Branch_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Branch_Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="PagePower" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ControlPower" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsSetBranchPower" Type="Byte" Nullable="false" />
+    <Property Name="SetBranchCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Manager_Id" Type="Int32" Nullable="false" />
+    <Property Name="Manager_CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsDel" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RID" />
+    </Key>
+    <Property Name="RID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Int32" />
+  </EntityType>
+  <EntityType Name="RoleManager">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RID" Type="Int32" />
+    <Property Name="MID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="RoleMenuPage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MIID" Type="Int32" />
+    <Property Name="PPSID" Type="Int32" />
+    <Property Name="RID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UseLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Manager_Id" Type="Int32" Nullable="false" />
+    <Property Name="Manager_CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Ip" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MenuInfo_Id" Type="Int32" Nullable="false" />
+    <Property Name="MenuInfo_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Int32" />
+  </EntityType>
+  <EntityType Name="WebConfig">
+    <Key>
+      <PropertyRef Name="WCID" />
+    </Key>
+    <Property Name="WCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WebName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WebDomain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WebEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LoginLogReserveTime" Type="Int32" Nullable="false" />
+    <Property Name="UseLogReserveTime" Type="Int32" Nullable="false" />
+    <Property Name="EmailSmtp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailPassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailDomain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_PAGEPOWE_REFERENCE_MENUINFO">
+    <End Type="ToolsDBModel.MenuInfo" Role="MenuInfo" Multiplicity="0..1" />
+    <End Type="ToolsDBModel.PagePowerSign" Role="PagePowerSign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuInfo">
+        <PropertyRef Name="MIID" />
+      </Principal>
+      <Dependent Role="PagePowerSign">
+        <PropertyRef Name="MIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAGEPOWE_REFERENCE_PAGEPOWE">
+    <End Type="ToolsDBModel.PagePowerSignPublic" Role="PagePowerSignPublic" Multiplicity="0..1" />
+    <End Type="ToolsDBModel.PagePowerSign" Role="PagePowerSign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PagePowerSignPublic">
+        <PropertyRef Name="PPSPID" />
+      </Principal>
+      <Dependent Role="PagePowerSign">
+        <PropertyRef Name="PPSPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MasterData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TableName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DataID" Type="Int32" Nullable="false" />
+    <Property Name="CreaterRoleID" Type="Int32" Nullable="false" />
+    <Property Name="CreaterID" Type="Int32" Nullable="false" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="ManagerID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="C_News">
+    <Key>
+      <PropertyRef Name="NID" />
+    </Key>
+    <Property Name="NID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NewsID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="ChannelID" Type="Int32" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="NewsTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SNewsTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TitleColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TitleITF" Type="Int32" />
+    <Property Name="TitleBIT" Type="Int32" />
+    <Property Name="URLLaddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PicURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="inPicURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Auther" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Souce" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Tags" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NewsProperty" Type="Int32" />
+    <Property Name="NewsPicTopline" Type="Int32" />
+    <Property Name="Templet" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKeywords" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Metadesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Click" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="SavePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FileEXName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TopNum" Type="Int32" />
+    <Property Name="IsLock" Type="Int32" />
+    <Property Name="IsDel" Type="Int32" />
+    <Property Name="DataLib" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DefineID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsHTML" Type="Int32" />
+    <Property Name="CheckStat" Type="Int32" />
+    <Property Name="Sorc" Type="Int32" />
+    <Property Name="PublicTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="C_Class" Relationship="ToolsDBModel.FK_C_NEWS_REFERENCE_C_CLASS" FromRole="C_News" ToRole="C_Class" />
+  </EntityType>
+  <Association Name="FK_C_NEWS_REFERENCE_C_CLASS">
+    <End Type="ToolsDBModel.C_Class" Role="C_Class" Multiplicity="0..1" />
+    <End Type="ToolsDBModel.C_News" Role="C_News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Class">
+        <PropertyRef Name="ClassID" />
+      </Principal>
+      <Dependent Role="C_News">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="C_Channel">
+    <Key>
+      <PropertyRef Name="ChannelID" />
+    </Key>
+    <Property Name="ChannelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="ChannelName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChannelEName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PCID" Type="Int32" />
+    <Property Name="IsOutChannel" Type="Int32" />
+    <Property Name="OutChannelUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Sorc" Type="Int32" />
+    <Property Name="BindDomain" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Review" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsDel" Type="Int32" />
+    <Property Name="MetaKeyword" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MetaDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ThirdUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PassWord" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreatTime" Type="DateTime" Precision="3" />
+    <Property Name="LastTime" Type="DateTime" Precision="3" />
+    <Property Name="ThirdType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ThirdId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Access_token" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NiceName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Province" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Expires_in" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsDel" Type="Int32" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="LoginName" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="NiceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsThird" Type="Int32" />
+    <Property Name="IsDel" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="TUID" Type="Int32" />
+  </EntityType>
+</Schema>

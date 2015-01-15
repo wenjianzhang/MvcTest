@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("HeadContent", required: false)
+    <style>
+        ul, li { margin: 0; padding: 0; list-style: none; }
+        #footer > div { width: 980px; margin: 0px auto; position: relative; }
+        #footer .social-nav { overflow: hidden; margin: 30px 0px 0px; position: absolute; right: 0; top: 0; }
+            #footer .social-nav li { float: left; margin-left: 5px; }
+                #footer .social-nav li a.twitter { background: url(/Content/img/twitter-sprite.png) 0px 0px no-repeat; }
+                #footer .social-nav li a.face-book { border: 0px !important; background: url(/Content/img/facebook-sprite.png) 0px 0px no-repeat; }
+                #footer .social-nav li a.skype { background: url(/Content/img/skype-icon.png) 0px 0px no-repeat; }
+                #footer .social-nav li a.rss { background: url(/Content/img/rss-sprite.png) 0px 0px no-repeat; }
+                #footer .social-nav li a.pin { background: url(/Content/img/pin-icon.png) 0px 0px no-repeat; }
+        #footer p { color: #96979d; font: 14px/90px "proxima_nova_rgregular", Arial, Helvetica, sans-serif; }
+        #footer .social-nav li a { font-size: 0px; line-height: 0px; display: block; width: 32px; height: 32px; }
+        #footer { width: 100%; min-height: 90px; }
+            #footer .social-nav li a { background: url(images/twitter-sprite.png) 0px 0px no-repeat; transition: all 0.2s; }
+                #footer .social-nav li a:hover { background-position: 0 -43px; transition: all 0.3s; }
+    </style>
+</head>
+<body>
+    <!--Header-part-->
+    <div id="header">
+        <h1><a href="/Home/Index">统一管理系统</a></h1>
+    </div>
+    <!--close-Header-part-->
+    <!--top-Header-menu-->
+    @Html.Partial("Partials/_headmenuPartial")
+    <!--close-top-Header-menu-->
+    <!--start-top-serch-->
+    <div id="search">
+        <input type="text" placeholder="Search here..." />
+        <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+    </div>
+    <!--close-top-serch-->
+    <!--sidebar-menu-->
+    @Html.Partial("Partials/_sidebarPartial")
+    <!--sidebar-menu-->
+    <!--main-container-part-->
+    @RenderBody()
+    <!--end-main-container-part-->
+    <!--Footer-part-->
+    <div class="row-fluid">
+        <div id="footer" class="span12">
+            <div>
+                <p> 2014 &copy;  版权所有 <a href="http://www.zhangwj.com/">别拿自己不当干不</a></p>
+                <ul class="social-nav">
+                    <li><a class="twitter" href="https://twitter.com/zhangwenjian" target="_blank">Twitter</a></li>
+                    <li><a class="face-book" href="https://www.facebook.com/people/Wenjian-Zhang/100003879334678" target="_blank">Facebook</a></li>
+                    <li><a class="skype" href="#" target="_blank">Skype</a></li>
+                    <li><a class="rss" href="#" target="_blank">RSS</a></li>
+                    <li><a class="pin" href="#" target="_blank">Pin</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--end-Footer-part-->
+    @RenderSection("FootContent", required: false)
+    <script src="~/Scripts/layer/layer.min.js"></script>
+    <script>
+        function OnloadMessage1() {
+            layer.load("正在保存", 1);
+        }
+        function OnloadMessage2() {
+            layer.load("正在跳转", 1);
+        }
+    </script>
+    @RenderSection("FootBottom", required: false)
+</body>
+</html>

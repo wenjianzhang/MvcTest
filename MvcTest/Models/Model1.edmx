@@ -1,0 +1,1323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ToolsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BID" />
+          </Key>
+          <Property Name="BID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="25" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="100" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="Depth" Type="int" Nullable="false" />
+          <Property Name="Manager_Id" Type="int" Nullable="false" />
+          <Property Name="Manager_CName" Type="nvarchar" MaxLength="20" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <EntityType Name="C_Channel">
+          <Key>
+            <PropertyRef Name="ChannelID" />
+          </Key>
+          <Property Name="ChannelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CID" Type="varchar" MaxLength="36" />
+          <Property Name="ChannelName" Type="varchar" MaxLength="200" />
+          <Property Name="ChannelEName" Type="varchar" MaxLength="200" />
+          <Property Name="PCID" Type="int" />
+          <Property Name="IsOutChannel" Type="int" />
+          <Property Name="OutChannelUrl" Type="varchar" MaxLength="500" />
+          <Property Name="Sorc" Type="int" />
+          <Property Name="BindDomain" Type="varchar" MaxLength="200" />
+          <Property Name="Review" Type="varchar" MaxLength="200" />
+          <Property Name="IsDel" Type="int" />
+          <Property Name="MetaKeyword" Type="varchar" MaxLength="200" />
+          <Property Name="MetaDescription" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="C_Class">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CID" Type="varchar" MaxLength="36" />
+          <Property Name="ClassName" Type="varchar" MaxLength="200" />
+          <Property Name="ClassEName" Type="varchar" MaxLength="200" />
+          <Property Name="PCID" Type="int" Nullable="false" />
+          <Property Name="IsOutClass" Type="int" />
+          <Property Name="OutClassUrl" Type="varchar" MaxLength="200" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="BindDomain" Type="varchar" MaxLength="200" />
+          <Property Name="ClassModel" Type="varchar" MaxLength="200" />
+          <Property Name="Saveurl" Type="varchar" MaxLength="200" />
+          <Property Name="ClassFile" Type="varchar" MaxLength="200" />
+          <Property Name="Review" Type="varchar" MaxLength="200" />
+          <Property Name="Namerules" Type="varchar" MaxLength="200" />
+          <Property Name="PageIndex" Type="varchar" MaxLength="200" />
+          <Property Name="NewsSaveurl" Type="varchar" MaxLength="200" />
+          <Property Name="NewsLookName" Type="varchar" MaxLength="200" />
+          <Property Name="ImageUploadurl" Type="varchar" MaxLength="200" />
+          <Property Name="PublicTime" Type="datetime" />
+          <Property Name="ClassDataTable" Type="varchar" MaxLength="200" />
+          <Property Name="ChannelID" Type="int" Nullable="false" />
+          <Property Name="IsMenuShow" Type="varchar" MaxLength="200" />
+          <Property Name="MenuImage" Type="varchar" MaxLength="200" />
+          <Property Name="MenuTitle" Type="varchar" MaxLength="200" />
+          <Property Name="MetaKeyword" Type="varchar" MaxLength="200" />
+          <Property Name="MetaDescription" Type="varchar" MaxLength="200" />
+          <Property Name="SCFileEXT" Type="varchar" MaxLength="200" />
+          <Property Name="IsLock" Type="int" />
+          <Property Name="IsDel" Type="int" />
+          <Property Name="CustomCode" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="IsPage" Type="int" />
+          <Property Name="IsHtml" Type="int" />
+        </EntityType>
+        <EntityType Name="C_News">
+          <Key>
+            <PropertyRef Name="NID" />
+          </Key>
+          <Property Name="NID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsID" Type="varchar" MaxLength="36" />
+          <Property Name="ChannelID" Type="int" />
+          <Property Name="ClassID" Type="int" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="NewsTitle" Type="varchar" MaxLength="500" />
+          <Property Name="SNewsTitle" Type="varchar" MaxLength="500" />
+          <Property Name="TitleColor" Type="varchar" MaxLength="50" />
+          <Property Name="TitleITF" Type="int" />
+          <Property Name="TitleBIT" Type="int" />
+          <Property Name="URLLaddress" Type="varchar" MaxLength="500" />
+          <Property Name="PicURL" Type="varchar" MaxLength="500" />
+          <Property Name="inPicURL" Type="varchar" MaxLength="500" />
+          <Property Name="Auther" Type="varchar" MaxLength="50" />
+          <Property Name="Souce" Type="varchar" MaxLength="500" />
+          <Property Name="Tags" Type="varchar" MaxLength="500" />
+          <Property Name="NewsProperty" Type="int" />
+          <Property Name="NewsPicTopline" Type="int" />
+          <Property Name="Templet" Type="varchar" MaxLength="500" />
+          <Property Name="Content" Type="ntext" />
+          <Property Name="MetaKeywords" Type="varchar" MaxLength="500" />
+          <Property Name="Metadesc" Type="varchar" MaxLength="500" />
+          <Property Name="Click" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="SavePath" Type="varchar" MaxLength="500" />
+          <Property Name="FileName" Type="varchar" MaxLength="500" />
+          <Property Name="FileEXName" Type="varchar" MaxLength="500" />
+          <Property Name="TopNum" Type="int" />
+          <Property Name="IsLock" Type="int" />
+          <Property Name="IsDel" Type="int" />
+          <Property Name="DataLib" Type="varchar" MaxLength="500" />
+          <Property Name="DefineID" Type="varchar" MaxLength="500" />
+          <Property Name="IsHTML" Type="int" />
+          <Property Name="CheckStat" Type="int" />
+          <Property Name="Sorc" Type="int" />
+          <Property Name="PublicTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EmailSendHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SendUsers_Id" Type="int" Nullable="false" />
+          <Property Name="SendUsers_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="SendUsers_Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="RecUsers_Id" Type="int" Nullable="false" />
+          <Property Name="RecUsers_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="RecUsers_Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="RecUserLevel_Id" Type="int" Nullable="false" />
+          <Property Name="RecUserLevel_Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="EmailSubject" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailContent" Type="ntext" />
+          <Property Name="SendDate" Type="datetime" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="30" />
+          <Property Name="ErrorMsg" Type="nvarchar" MaxLength="200" />
+          <Property Name="Template_Id" Type="int" />
+          <Property Name="Template_Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrTime" Type="datetime" />
+          <Property Name="BrowserVersion" Type="nvarchar" MaxLength="20" />
+          <Property Name="BrowserType" Type="nvarchar" MaxLength="20" />
+          <Property Name="Ip" Type="nvarchar" MaxLength="30" />
+          <Property Name="PageUrl" Type="nvarchar" MaxLength="100" />
+          <Property Name="ErrMessage" Type="ntext" />
+          <Property Name="ErrSource" Type="ntext" />
+          <Property Name="StackTrace" Type="ntext" />
+          <Property Name="HelpLink" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="tinyint" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <EntityType Name="LoginLog">
+          <Key>
+            <PropertyRef Name="LoginLogID" />
+          </Key>
+          <Property Name="LoginLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+          <Property Name="Manager_Id" Type="int" Nullable="false" />
+          <Property Name="Manager_CName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Ip" Type="nvarchar" MaxLength="30" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsDel" Type="int" />
+          <Property Name="City" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="MID" />
+          </Key>
+          <Property Name="MID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LoginPass" Type="nvarchar" MaxLength="32" />
+          <Property Name="LoginTime" Type="datetime" />
+          <Property Name="LoginIp" Type="nvarchar" MaxLength="30" />
+          <Property Name="LoginCount" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="Branch_Id" Type="int" Nullable="false" />
+          <Property Name="Branch_Code" Type="nvarchar" MaxLength="20" />
+          <Property Name="Branch_Name" Type="nvarchar" MaxLength="25" />
+          <Property Name="Position_Id" Type="int" Nullable="false" />
+          <Property Name="Position_Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Enable" Type="tinyint" Nullable="false" />
+          <Property Name="CName" Type="nvarchar" MaxLength="20" />
+          <Property Name="EName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhotoImg" Type="nvarchar" MaxLength="250" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="4" />
+          <Property Name="Birthday" Type="nvarchar" MaxLength="20" />
+          <Property Name="NativePlace" Type="nvarchar" MaxLength="100" />
+          <Property Name="NationalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Record" Type="nvarchar" MaxLength="25" />
+          <Property Name="GraduateCollege" Type="nvarchar" MaxLength="30" />
+          <Property Name="GraduateSpecialty" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="30" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qq" Type="nvarchar" MaxLength="30" />
+          <Property Name="Msn" Type="nvarchar" MaxLength="30" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Content" Type="ntext" />
+          <Property Name="Manager_Id" Type="int" Nullable="false" />
+          <Property Name="Manager_CName" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <EntityType Name="MasterData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="DataID" Type="int" Nullable="false" />
+          <Property Name="CreaterRoleID" Type="int" Nullable="false" />
+          <Property Name="CreaterID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="ManagerID" Type="int" />
+        </EntityType>
+        <EntityType Name="MenuInfo">
+          <Key>
+            <PropertyRef Name="MIID" />
+          </Key>
+          <Property Name="MIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Url" Type="nvarchar" MaxLength="250" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="Depth" Type="int" Nullable="false" />
+          <Property Name="IsDisplay" Type="tinyint" Nullable="false" />
+          <Property Name="IsMenu" Type="tinyint" Nullable="false" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <EntityType Name="PagePowerSign">
+          <Key>
+            <PropertyRef Name="PPSID" />
+          </Key>
+          <Property Name="PPSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MIID" Type="int" />
+          <Property Name="PPSPID" Type="int" />
+          <Property Name="CName" Type="nvarchar" MaxLength="20" />
+          <Property Name="EName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PagePowerSignPublic">
+          <Key>
+            <PropertyRef Name="PPSPID" />
+          </Key>
+          <Property Name="PPSPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CName" Type="nvarchar" MaxLength="20" />
+          <Property Name="EName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StyleClass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Branch_Id" Type="int" Nullable="false" />
+          <Property Name="Branch_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Branch_Name" Type="nvarchar" MaxLength="25" />
+          <Property Name="PagePower" Type="ntext" />
+          <Property Name="ControlPower" Type="ntext" />
+          <Property Name="IsSetBranchPower" Type="tinyint" Nullable="false" />
+          <Property Name="SetBranchCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Manager_Id" Type="int" Nullable="false" />
+          <Property Name="Manager_CName" Type="nvarchar" MaxLength="20" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <EntityType Name="RoleManager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RID" Type="int" />
+          <Property Name="MID" Type="int" />
+        </EntityType>
+        <EntityType Name="RoleMenuPage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MIID" Type="int" />
+          <Property Name="PPSID" Type="int" />
+          <Property Name="RID" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ThirdUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="PassWord" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatTime" Type="datetime" />
+          <Property Name="LastTime" Type="datetime" />
+          <Property Name="ThirdType" Type="varchar" MaxLength="200" />
+          <Property Name="ThirdId" Type="varchar" MaxLength="200" />
+          <Property Name="Access_token" Type="varchar" MaxLength="200" />
+          <Property Name="NiceName" Type="varchar" MaxLength="200" />
+          <Property Name="Sex" Type="varchar" MaxLength="10" />
+          <Property Name="Province" Type="varchar" MaxLength="200" />
+          <Property Name="City" Type="varchar" MaxLength="200" />
+          <Property Name="Photo" Type="varchar" MaxLength="200" />
+          <Property Name="Expires_in" Type="varchar" MaxLength="200" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <EntityType Name="UseLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+          <Property Name="Manager_Id" Type="int" Nullable="false" />
+          <Property Name="Manager_CName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Ip" Type="nvarchar" MaxLength="30" />
+          <Property Name="MenuInfo_Id" Type="int" Nullable="false" />
+          <Property Name="MenuInfo_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="LoginName" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="128" />
+          <Property Name="PasswordSalt" Type="varchar" MaxLength="128" />
+          <Property Name="NiceName" Type="varchar" MaxLength="100" />
+          <Property Name="IsThird" Type="int" />
+          <Property Name="IsDel" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="TUID" Type="int" />
+        </EntityType>
+        <EntityType Name="WebConfig">
+          <Key>
+            <PropertyRef Name="WCID" />
+          </Key>
+          <Property Name="WCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WebName" Type="nvarchar" MaxLength="50" />
+          <Property Name="WebDomain" Type="nvarchar" MaxLength="50" />
+          <Property Name="WebEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoginLogReserveTime" Type="int" Nullable="false" />
+          <Property Name="UseLogReserveTime" Type="int" Nullable="false" />
+          <Property Name="EmailSmtp" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailPassWord" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailDomain" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <Association Name="FK_C_NEWS_REFERENCE_C_CLASS">
+          <End Role="C_Class" Type="Self.C_Class" Multiplicity="0..1" />
+          <End Role="C_News" Type="Self.C_News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Class">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="C_News">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAGEPOWE_REFERENCE_MENUINFO">
+          <End Role="MenuInfo" Type="Self.MenuInfo" Multiplicity="0..1" />
+          <End Role="PagePowerSign" Type="Self.PagePowerSign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuInfo">
+              <PropertyRef Name="MIID" />
+            </Principal>
+            <Dependent Role="PagePowerSign">
+              <PropertyRef Name="MIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAGEPOWE_REFERENCE_PAGEPOWE">
+          <End Role="PagePowerSignPublic" Type="Self.PagePowerSignPublic" Multiplicity="0..1" />
+          <End Role="PagePowerSign" Type="Self.PagePowerSign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PagePowerSignPublic">
+              <PropertyRef Name="PPSPID" />
+            </Principal>
+            <Dependent Role="PagePowerSign">
+              <PropertyRef Name="PPSPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ToolsDBModelStoreContainer">
+          <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Channel" EntityType="Self.C_Channel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Class" EntityType="Self.C_Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_News" EntityType="Self.C_News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailSendHistory" EntityType="Self.EmailSendHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginLog" EntityType="Self.LoginLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterData" EntityType="Self.MasterData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuInfo" EntityType="Self.MenuInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PagePowerSign" EntityType="Self.PagePowerSign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PagePowerSignPublic" EntityType="Self.PagePowerSignPublic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleManager" EntityType="Self.RoleManager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleMenuPage" EntityType="Self.RoleMenuPage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThirdUser" EntityType="Self.ThirdUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UseLog" EntityType="Self.UseLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebConfig" EntityType="Self.WebConfig" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_C_NEWS_REFERENCE_C_CLASS" Association="Self.FK_C_NEWS_REFERENCE_C_CLASS">
+            <End Role="C_Class" EntitySet="C_Class" />
+            <End Role="C_News" EntitySet="C_News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAGEPOWE_REFERENCE_MENUINFO" Association="Self.FK_PAGEPOWE_REFERENCE_MENUINFO">
+            <End Role="MenuInfo" EntitySet="MenuInfo" />
+            <End Role="PagePowerSign" EntitySet="PagePowerSign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAGEPOWE_REFERENCE_PAGEPOWE" Association="Self.FK_PAGEPOWE_REFERENCE_PAGEPOWE">
+            <End Role="PagePowerSignPublic" EntitySet="PagePowerSignPublic" />
+            <End Role="PagePowerSign" EntitySet="PagePowerSign" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ToolsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ToolsDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Branches" EntityType="ToolsDBModel.Branch" />
+          <EntitySet Name="C_Class" EntityType="ToolsDBModel.C_Class" />
+          <EntitySet Name="EmailSendHistories" EntityType="ToolsDBModel.EmailSendHistory" />
+          <EntitySet Name="ErrorLogs" EntityType="ToolsDBModel.ErrorLog" />
+          <EntitySet Name="LoginLogs" EntityType="ToolsDBModel.LoginLog" />
+          <EntitySet Name="Managers" EntityType="ToolsDBModel.Manager" />
+          <EntitySet Name="MenuInfoes" EntityType="ToolsDBModel.MenuInfo" />
+          <EntitySet Name="PagePowerSigns" EntityType="ToolsDBModel.PagePowerSign" />
+          <EntitySet Name="PagePowerSignPublics" EntityType="ToolsDBModel.PagePowerSignPublic" />
+          <EntitySet Name="Positions" EntityType="ToolsDBModel.Position" />
+          <EntitySet Name="Roles" EntityType="ToolsDBModel.Role" />
+          <EntitySet Name="RoleManagers" EntityType="ToolsDBModel.RoleManager" />
+          <EntitySet Name="RoleMenuPages" EntityType="ToolsDBModel.RoleMenuPage" />
+          <EntitySet Name="sysdiagrams" EntityType="ToolsDBModel.sysdiagram" />
+          <EntitySet Name="UseLogs" EntityType="ToolsDBModel.UseLog" />
+          <EntitySet Name="WebConfigs" EntityType="ToolsDBModel.WebConfig" />
+          <AssociationSet Name="FK_PAGEPOWE_REFERENCE_MENUINFO" Association="ToolsDBModel.FK_PAGEPOWE_REFERENCE_MENUINFO">
+            <End Role="MenuInfo" EntitySet="MenuInfoes" />
+            <End Role="PagePowerSign" EntitySet="PagePowerSigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAGEPOWE_REFERENCE_PAGEPOWE" Association="ToolsDBModel.FK_PAGEPOWE_REFERENCE_PAGEPOWE">
+            <End Role="PagePowerSignPublic" EntitySet="PagePowerSignPublics" />
+            <End Role="PagePowerSign" EntitySet="PagePowerSigns" />
+          </AssociationSet>
+          <EntitySet Name="MasterDatas" EntityType="ToolsDBModel.MasterData" />
+          <EntitySet Name="C_News" EntityType="ToolsDBModel.C_News" />
+          <AssociationSet Name="FK_C_NEWS_REFERENCE_C_CLASS" Association="ToolsDBModel.FK_C_NEWS_REFERENCE_C_CLASS">
+            <End Role="C_Class" EntitySet="C_Class" />
+            <End Role="C_News" EntitySet="C_News" />
+          </AssociationSet>
+          <EntitySet Name="C_Channel" EntityType="ToolsDBModel.C_Channel" />
+          <EntitySet Name="ThirdUsers" EntityType="ToolsDBModel.ThirdUser" />
+          <EntitySet Name="Users" EntityType="ToolsDBModel.User" />
+        </EntityContainer>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BID" />
+          </Key>
+          <Property Name="BID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Depth" Type="Int32" Nullable="false" />
+          <Property Name="Manager_Id" Type="Int32" Nullable="false" />
+          <Property Name="Manager_CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="C_Class">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ClassName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ClassEName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PCID" Type="Int32" Nullable="false" />
+          <Property Name="IsOutClass" Type="Int32" />
+          <Property Name="OutClassUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="BindDomain" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ClassModel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Saveurl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ClassFile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Review" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Namerules" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PageIndex" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NewsSaveurl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NewsLookName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ImageUploadurl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PublicTime" Type="DateTime" Precision="3" />
+          <Property Name="ClassDataTable" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChannelID" Type="Int32" Nullable="false" />
+          <Property Name="IsMenuShow" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MenuImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MenuTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MetaKeyword" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SCFileEXT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsLock" Type="Int32" />
+          <Property Name="IsDel" Type="Int32" />
+          <Property Name="CustomCode" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsPage" Type="Int32" />
+          <Property Name="IsHtml" Type="Int32" />
+          <NavigationProperty Name="C_News" Relationship="ToolsDBModel.FK_C_NEWS_REFERENCE_C_CLASS" FromRole="C_Class" ToRole="C_News" />
+        </EntityType>
+        <EntityType Name="EmailSendHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SendUsers_Id" Type="Int32" Nullable="false" />
+          <Property Name="SendUsers_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SendUsers_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RecUsers_Id" Type="Int32" Nullable="false" />
+          <Property Name="RecUsers_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RecUsers_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RecUserLevel_Id" Type="Int32" Nullable="false" />
+          <Property Name="RecUserLevel_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EmailSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SendDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Byte" />
+          <Property Name="StatusName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorMsg" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Template_Id" Type="Int32" />
+          <Property Name="Template_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrTime" Type="DateTime" Precision="3" />
+          <Property Name="BrowserVersion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BrowserType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Ip" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PageUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ErrMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ErrSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HelpLink" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Byte" />
+          <Property Name="IsDel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LoginLog">
+          <Key>
+            <PropertyRef Name="LoginLogID" />
+          </Key>
+          <Property Name="LoginLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Manager_Id" Type="Int32" Nullable="false" />
+          <Property Name="Manager_CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Ip" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Int32" />
+          <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="MID" />
+          </Key>
+          <Property Name="MID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LoginPass" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="LoginTime" Type="DateTime" Precision="3" />
+          <Property Name="LoginIp" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LoginCount" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Branch_Id" Type="Int32" Nullable="false" />
+          <Property Name="Branch_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Branch_Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Position_Id" Type="Int32" Nullable="false" />
+          <Property Name="Position_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Enable" Type="Byte" Nullable="false" />
+          <Property Name="CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoImg" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NativePlace" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NationalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Record" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="GraduateCollege" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GraduateSpecialty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qq" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Msn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Manager_Id" Type="Int32" Nullable="false" />
+          <Property Name="Manager_CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MenuInfo">
+          <Key>
+            <PropertyRef Name="MIID" />
+          </Key>
+          <Property Name="MIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Depth" Type="Int32" Nullable="false" />
+          <Property Name="IsDisplay" Type="Byte" Nullable="false" />
+          <Property Name="IsMenu" Type="Byte" Nullable="false" />
+          <Property Name="IsDel" Type="Int32" />
+          <NavigationProperty Name="PagePowerSigns" Relationship="ToolsDBModel.FK_PAGEPOWE_REFERENCE_MENUINFO" FromRole="MenuInfo" ToRole="PagePowerSign" />
+        </EntityType>
+        <EntityType Name="PagePowerSign">
+          <Key>
+            <PropertyRef Name="PPSID" />
+          </Key>
+          <Property Name="PPSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MIID" Type="Int32" />
+          <Property Name="PPSPID" Type="Int32" />
+          <Property Name="CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MenuInfo" Relationship="ToolsDBModel.FK_PAGEPOWE_REFERENCE_MENUINFO" FromRole="PagePowerSign" ToRole="MenuInfo" />
+          <NavigationProperty Name="PagePowerSignPublic" Relationship="ToolsDBModel.FK_PAGEPOWE_REFERENCE_PAGEPOWE" FromRole="PagePowerSign" ToRole="PagePowerSignPublic" />
+        </EntityType>
+        <EntityType Name="PagePowerSignPublic">
+          <Key>
+            <PropertyRef Name="PPSPID" />
+          </Key>
+          <Property Name="PPSPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StyleClass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Int32" />
+          <NavigationProperty Name="PagePowerSigns" Relationship="ToolsDBModel.FK_PAGEPOWE_REFERENCE_PAGEPOWE" FromRole="PagePowerSignPublic" ToRole="PagePowerSign" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Branch_Id" Type="Int32" Nullable="false" />
+          <Property Name="Branch_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Branch_Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="PagePower" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ControlPower" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsSetBranchPower" Type="Byte" Nullable="false" />
+          <Property Name="SetBranchCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Manager_Id" Type="Int32" Nullable="false" />
+          <Property Name="Manager_CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RoleManager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RID" Type="Int32" />
+          <Property Name="MID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RoleMenuPage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MIID" Type="Int32" />
+          <Property Name="PPSID" Type="Int32" />
+          <Property Name="RID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UseLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Manager_Id" Type="Int32" Nullable="false" />
+          <Property Name="Manager_CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Ip" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MenuInfo_Id" Type="Int32" Nullable="false" />
+          <Property Name="MenuInfo_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="WebConfig">
+          <Key>
+            <PropertyRef Name="WCID" />
+          </Key>
+          <Property Name="WCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WebName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebDomain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoginLogReserveTime" Type="Int32" Nullable="false" />
+          <Property Name="UseLogReserveTime" Type="Int32" Nullable="false" />
+          <Property Name="EmailSmtp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailPassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailDomain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_PAGEPOWE_REFERENCE_MENUINFO">
+          <End Type="ToolsDBModel.MenuInfo" Role="MenuInfo" Multiplicity="0..1" />
+          <End Type="ToolsDBModel.PagePowerSign" Role="PagePowerSign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuInfo">
+              <PropertyRef Name="MIID" />
+            </Principal>
+            <Dependent Role="PagePowerSign">
+              <PropertyRef Name="MIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAGEPOWE_REFERENCE_PAGEPOWE">
+          <End Type="ToolsDBModel.PagePowerSignPublic" Role="PagePowerSignPublic" Multiplicity="0..1" />
+          <End Type="ToolsDBModel.PagePowerSign" Role="PagePowerSign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PagePowerSignPublic">
+              <PropertyRef Name="PPSPID" />
+            </Principal>
+            <Dependent Role="PagePowerSign">
+              <PropertyRef Name="PPSPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MasterData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DataID" Type="Int32" Nullable="false" />
+          <Property Name="CreaterRoleID" Type="Int32" Nullable="false" />
+          <Property Name="CreaterID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="ManagerID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="C_News">
+          <Key>
+            <PropertyRef Name="NID" />
+          </Key>
+          <Property Name="NID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ChannelID" Type="Int32" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="NewsTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SNewsTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TitleColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TitleITF" Type="Int32" />
+          <Property Name="TitleBIT" Type="Int32" />
+          <Property Name="URLLaddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PicURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="inPicURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Auther" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Souce" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Tags" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NewsProperty" Type="Int32" />
+          <Property Name="NewsPicTopline" Type="Int32" />
+          <Property Name="Templet" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Metadesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Click" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="SavePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FileEXName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TopNum" Type="Int32" />
+          <Property Name="IsLock" Type="Int32" />
+          <Property Name="IsDel" Type="Int32" />
+          <Property Name="DataLib" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DefineID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsHTML" Type="Int32" />
+          <Property Name="CheckStat" Type="Int32" />
+          <Property Name="Sorc" Type="Int32" />
+          <Property Name="PublicTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="C_Class" Relationship="ToolsDBModel.FK_C_NEWS_REFERENCE_C_CLASS" FromRole="C_News" ToRole="C_Class" />
+        </EntityType>
+        <Association Name="FK_C_NEWS_REFERENCE_C_CLASS">
+          <End Type="ToolsDBModel.C_Class" Role="C_Class" Multiplicity="0..1" />
+          <End Type="ToolsDBModel.C_News" Role="C_News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Class">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="C_News">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="C_Channel">
+          <Key>
+            <PropertyRef Name="ChannelID" />
+          </Key>
+          <Property Name="ChannelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ChannelName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChannelEName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PCID" Type="Int32" />
+          <Property Name="IsOutChannel" Type="Int32" />
+          <Property Name="OutChannelUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Sorc" Type="Int32" />
+          <Property Name="BindDomain" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Review" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsDel" Type="Int32" />
+          <Property Name="MetaKeyword" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ThirdUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatTime" Type="DateTime" Precision="3" />
+          <Property Name="LastTime" Type="DateTime" Precision="3" />
+          <Property Name="ThirdType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ThirdId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Access_token" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NiceName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Expires_in" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsDel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="LoginName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="NiceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsThird" Type="Int32" />
+          <Property Name="IsDel" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="TUID" Type="Int32" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ToolsDBModelStoreContainer" CdmEntityContainer="ToolsDBEntities">
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="ToolsDBModel.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="Manager_CName" ColumnName="Manager_CName" />
+                <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BID" ColumnName="BID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Class">
+            <EntityTypeMapping TypeName="ToolsDBModel.C_Class">
+              <MappingFragment StoreEntitySet="C_Class">
+                <ScalarProperty Name="IsHtml" ColumnName="IsHtml" />
+                <ScalarProperty Name="IsPage" ColumnName="IsPage" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CustomCode" ColumnName="CustomCode" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="IsLock" ColumnName="IsLock" />
+                <ScalarProperty Name="SCFileEXT" ColumnName="SCFileEXT" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
+                <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+                <ScalarProperty Name="MenuImage" ColumnName="MenuImage" />
+                <ScalarProperty Name="IsMenuShow" ColumnName="IsMenuShow" />
+                <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+                <ScalarProperty Name="ClassDataTable" ColumnName="ClassDataTable" />
+                <ScalarProperty Name="PublicTime" ColumnName="PublicTime" />
+                <ScalarProperty Name="ImageUploadurl" ColumnName="ImageUploadurl" />
+                <ScalarProperty Name="NewsLookName" ColumnName="NewsLookName" />
+                <ScalarProperty Name="NewsSaveurl" ColumnName="NewsSaveurl" />
+                <ScalarProperty Name="PageIndex" ColumnName="PageIndex" />
+                <ScalarProperty Name="Namerules" ColumnName="Namerules" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="ClassFile" ColumnName="ClassFile" />
+                <ScalarProperty Name="Saveurl" ColumnName="Saveurl" />
+                <ScalarProperty Name="ClassModel" ColumnName="ClassModel" />
+                <ScalarProperty Name="BindDomain" ColumnName="BindDomain" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="OutClassUrl" ColumnName="OutClassUrl" />
+                <ScalarProperty Name="IsOutClass" ColumnName="IsOutClass" />
+                <ScalarProperty Name="PCID" ColumnName="PCID" />
+                <ScalarProperty Name="ClassEName" ColumnName="ClassEName" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailSendHistories">
+            <EntityTypeMapping TypeName="ToolsDBModel.EmailSendHistory">
+              <MappingFragment StoreEntitySet="EmailSendHistory">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Template_Name" ColumnName="Template_Name" />
+                <ScalarProperty Name="Template_Id" ColumnName="Template_Id" />
+                <ScalarProperty Name="ErrorMsg" ColumnName="ErrorMsg" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="EmailContent" ColumnName="EmailContent" />
+                <ScalarProperty Name="EmailSubject" ColumnName="EmailSubject" />
+                <ScalarProperty Name="RecUserLevel_Name" ColumnName="RecUserLevel_Name" />
+                <ScalarProperty Name="RecUserLevel_Id" ColumnName="RecUserLevel_Id" />
+                <ScalarProperty Name="RecUsers_Email" ColumnName="RecUsers_Email" />
+                <ScalarProperty Name="RecUsers_Name" ColumnName="RecUsers_Name" />
+                <ScalarProperty Name="RecUsers_Id" ColumnName="RecUsers_Id" />
+                <ScalarProperty Name="SendUsers_Email" ColumnName="SendUsers_Email" />
+                <ScalarProperty Name="SendUsers_Name" ColumnName="SendUsers_Name" />
+                <ScalarProperty Name="SendUsers_Id" ColumnName="SendUsers_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="ToolsDBModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="HelpLink" ColumnName="HelpLink" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="ErrSource" ColumnName="ErrSource" />
+                <ScalarProperty Name="ErrMessage" ColumnName="ErrMessage" />
+                <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="BrowserType" ColumnName="BrowserType" />
+                <ScalarProperty Name="BrowserVersion" ColumnName="BrowserVersion" />
+                <ScalarProperty Name="ErrTime" ColumnName="ErrTime" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginLogs">
+            <EntityTypeMapping TypeName="ToolsDBModel.LoginLog">
+              <MappingFragment StoreEntitySet="LoginLog">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="Manager_CName" ColumnName="Manager_CName" />
+                <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="LoginLogID" ColumnName="LoginLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managers">
+            <EntityTypeMapping TypeName="ToolsDBModel.Manager">
+              <MappingFragment StoreEntitySet="Manager">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Manager_CName" ColumnName="Manager_CName" />
+                <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Msn" ColumnName="Msn" />
+                <ScalarProperty Name="Qq" ColumnName="Qq" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="GraduateSpecialty" ColumnName="GraduateSpecialty" />
+                <ScalarProperty Name="GraduateCollege" ColumnName="GraduateCollege" />
+                <ScalarProperty Name="Record" ColumnName="Record" />
+                <ScalarProperty Name="NationalName" ColumnName="NationalName" />
+                <ScalarProperty Name="NativePlace" ColumnName="NativePlace" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="PhotoImg" ColumnName="PhotoImg" />
+                <ScalarProperty Name="EName" ColumnName="EName" />
+                <ScalarProperty Name="CName" ColumnName="CName" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="Position_Name" ColumnName="Position_Name" />
+                <ScalarProperty Name="Position_Id" ColumnName="Position_Id" />
+                <ScalarProperty Name="Branch_Name" ColumnName="Branch_Name" />
+                <ScalarProperty Name="Branch_Code" ColumnName="Branch_Code" />
+                <ScalarProperty Name="Branch_Id" ColumnName="Branch_Id" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
+                <ScalarProperty Name="LoginIp" ColumnName="LoginIp" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="LoginPass" ColumnName="LoginPass" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuInfoes">
+            <EntityTypeMapping TypeName="ToolsDBModel.MenuInfo">
+              <MappingFragment StoreEntitySet="MenuInfo">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="IsMenu" ColumnName="IsMenu" />
+                <ScalarProperty Name="IsDisplay" ColumnName="IsDisplay" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MIID" ColumnName="MIID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PagePowerSigns">
+            <EntityTypeMapping TypeName="ToolsDBModel.PagePowerSign">
+              <MappingFragment StoreEntitySet="PagePowerSign">
+                <ScalarProperty Name="EName" ColumnName="EName" />
+                <ScalarProperty Name="CName" ColumnName="CName" />
+                <ScalarProperty Name="PPSPID" ColumnName="PPSPID" />
+                <ScalarProperty Name="MIID" ColumnName="MIID" />
+                <ScalarProperty Name="PPSID" ColumnName="PPSID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PagePowerSignPublics">
+            <EntityTypeMapping TypeName="ToolsDBModel.PagePowerSignPublic">
+              <MappingFragment StoreEntitySet="PagePowerSignPublic">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="StyleClass" ColumnName="StyleClass" />
+                <ScalarProperty Name="EName" ColumnName="EName" />
+                <ScalarProperty Name="CName" ColumnName="CName" />
+                <ScalarProperty Name="PPSPID" ColumnName="PPSPID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="ToolsDBModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="Manager_CName" ColumnName="Manager_CName" />
+                <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+                <ScalarProperty Name="SetBranchCode" ColumnName="SetBranchCode" />
+                <ScalarProperty Name="IsSetBranchPower" ColumnName="IsSetBranchPower" />
+                <ScalarProperty Name="ControlPower" ColumnName="ControlPower" />
+                <ScalarProperty Name="PagePower" ColumnName="PagePower" />
+                <ScalarProperty Name="Branch_Name" ColumnName="Branch_Name" />
+                <ScalarProperty Name="Branch_Code" ColumnName="Branch_Code" />
+                <ScalarProperty Name="Branch_Id" ColumnName="Branch_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="ToolsDBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RID" ColumnName="RID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleManagers">
+            <EntityTypeMapping TypeName="ToolsDBModel.RoleManager">
+              <MappingFragment StoreEntitySet="RoleManager">
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="RID" ColumnName="RID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleMenuPages">
+            <EntityTypeMapping TypeName="ToolsDBModel.RoleMenuPage">
+              <MappingFragment StoreEntitySet="RoleMenuPage">
+                <ScalarProperty Name="RID" ColumnName="RID" />
+                <ScalarProperty Name="PPSID" ColumnName="PPSID" />
+                <ScalarProperty Name="MIID" ColumnName="MIID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ToolsDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UseLogs">
+            <EntityTypeMapping TypeName="ToolsDBModel.UseLog">
+              <MappingFragment StoreEntitySet="UseLog">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="MenuInfo_Name" ColumnName="MenuInfo_Name" />
+                <ScalarProperty Name="MenuInfo_Id" ColumnName="MenuInfo_Id" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="Manager_CName" ColumnName="Manager_CName" />
+                <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebConfigs">
+            <EntityTypeMapping TypeName="ToolsDBModel.WebConfig">
+              <MappingFragment StoreEntitySet="WebConfig">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="EmailDomain" ColumnName="EmailDomain" />
+                <ScalarProperty Name="EmailPassWord" ColumnName="EmailPassWord" />
+                <ScalarProperty Name="EmailUserName" ColumnName="EmailUserName" />
+                <ScalarProperty Name="EmailSmtp" ColumnName="EmailSmtp" />
+                <ScalarProperty Name="UseLogReserveTime" ColumnName="UseLogReserveTime" />
+                <ScalarProperty Name="LoginLogReserveTime" ColumnName="LoginLogReserveTime" />
+                <ScalarProperty Name="WebEmail" ColumnName="WebEmail" />
+                <ScalarProperty Name="WebDomain" ColumnName="WebDomain" />
+                <ScalarProperty Name="WebName" ColumnName="WebName" />
+                <ScalarProperty Name="WCID" ColumnName="WCID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterDatas">
+            <EntityTypeMapping TypeName="ToolsDBModel.MasterData">
+              <MappingFragment StoreEntitySet="MasterData">
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="CreaterID" ColumnName="CreaterID" />
+                <ScalarProperty Name="CreaterRoleID" ColumnName="CreaterRoleID" />
+                <ScalarProperty Name="DataID" ColumnName="DataID" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_News">
+            <EntityTypeMapping TypeName="ToolsDBModel.C_News">
+              <MappingFragment StoreEntitySet="C_News">
+                <ScalarProperty Name="PublicTime" ColumnName="PublicTime" />
+                <ScalarProperty Name="Sorc" ColumnName="Sorc" />
+                <ScalarProperty Name="CheckStat" ColumnName="CheckStat" />
+                <ScalarProperty Name="IsHTML" ColumnName="IsHTML" />
+                <ScalarProperty Name="DefineID" ColumnName="DefineID" />
+                <ScalarProperty Name="DataLib" ColumnName="DataLib" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="IsLock" ColumnName="IsLock" />
+                <ScalarProperty Name="TopNum" ColumnName="TopNum" />
+                <ScalarProperty Name="FileEXName" ColumnName="FileEXName" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="SavePath" ColumnName="SavePath" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Click" ColumnName="Click" />
+                <ScalarProperty Name="Metadesc" ColumnName="Metadesc" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Templet" ColumnName="Templet" />
+                <ScalarProperty Name="NewsPicTopline" ColumnName="NewsPicTopline" />
+                <ScalarProperty Name="NewsProperty" ColumnName="NewsProperty" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="Souce" ColumnName="Souce" />
+                <ScalarProperty Name="Auther" ColumnName="Auther" />
+                <ScalarProperty Name="inPicURL" ColumnName="inPicURL" />
+                <ScalarProperty Name="PicURL" ColumnName="PicURL" />
+                <ScalarProperty Name="URLLaddress" ColumnName="URLLaddress" />
+                <ScalarProperty Name="TitleBIT" ColumnName="TitleBIT" />
+                <ScalarProperty Name="TitleITF" ColumnName="TitleITF" />
+                <ScalarProperty Name="TitleColor" ColumnName="TitleColor" />
+                <ScalarProperty Name="SNewsTitle" ColumnName="SNewsTitle" />
+                <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="NID" ColumnName="NID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Channel">
+            <EntityTypeMapping TypeName="ToolsDBModel.C_Channel">
+              <MappingFragment StoreEntitySet="C_Channel">
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="BindDomain" ColumnName="BindDomain" />
+                <ScalarProperty Name="Sorc" ColumnName="Sorc" />
+                <ScalarProperty Name="OutChannelUrl" ColumnName="OutChannelUrl" />
+                <ScalarProperty Name="IsOutChannel" ColumnName="IsOutChannel" />
+                <ScalarProperty Name="PCID" ColumnName="PCID" />
+                <ScalarProperty Name="ChannelEName" ColumnName="ChannelEName" />
+                <ScalarProperty Name="ChannelName" ColumnName="ChannelName" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThirdUsers">
+            <EntityTypeMapping TypeName="ToolsDBModel.ThirdUser">
+              <MappingFragment StoreEntitySet="ThirdUser">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Expires_in" ColumnName="Expires_in" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="NiceName" ColumnName="NiceName" />
+                <ScalarProperty Name="Access_token" ColumnName="Access_token" />
+                <ScalarProperty Name="ThirdId" ColumnName="ThirdId" />
+                <ScalarProperty Name="ThirdType" ColumnName="ThirdType" />
+                <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+                <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ToolsDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="TUID" ColumnName="TUID" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="IsThird" ColumnName="IsThird" />
+                <ScalarProperty Name="NiceName" ColumnName="NiceName" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,126 @@
+﻿@model MvcTest.Models.Branch
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@section HeadContent{
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+    @*<link rel="stylesheet" href="~/Content/css/colorpicker.css" />
+        <link rel="stylesheet" href="~/Content/css/datepicker.css" />*@
+    <link rel="stylesheet" href="~/Content/css/uniform.css" />
+    <link rel="stylesheet" href="~/Content/css/select2.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-media.css" />
+    @*<link rel="stylesheet" href="~/Content/css/bootstrap-wysihtml5.css" />*@
+    @*<link href="~/fonts/css/font-awesome.css" rel="stylesheet" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>*@
+}
+
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">部门表</a> <a href="#" class="current">修改</a> </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-align-justify"></i> </span>
+                        <h5>部门表</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        @using (Html.BeginForm("Edit", "Branch", new { id = Model.BID }, FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            @Html.HiddenFor(model => model.BID);
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Code, "部门Code", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Code, new { @class = "span8", placeholder = "部门Code" })
+                                    @Html.ValidationMessageFor(model => model.Code)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Name, "部门名称", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "span8", placeholder = "部门名称" })
+                                    @Html.ValidationMessageFor(model => model.Name)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Notes, "备注", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Notes, new { @class = "span8", placeholder = "备注" })
+                                    @Html.ValidationMessageFor(model => model.Notes)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.ParentId, "父部门", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.DropDownListFor(model => model.ParentId, (ViewBag.list as List<SelectListItem>), new { @class = "span4" })
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Sort, "排序", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Sort, new { @class = "span8", placeholder = "排序" })
+                                    @Html.ValidationMessageFor(model => model.Sort)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Depth, "深度", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Depth, new { @class = "span8", placeholder = "深度" })
+                                    @Html.ValidationMessageFor(model => model.Depth)
+                                </div>
+                            </div>
+    <div class="control-group">
+        <label class="control-label">有权角色</label>
+        <div class="controls">
+            @Html.ListBox("Rolelist", (ViewBag.RoleSS as IEnumerable<SelectListItem>), new { @multiple = "" })
+
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">有权用户</label>
+        <div class="controls">
+            @Html.DropDownList("Managerlist", (ViewBag.ManagerSS as List<SelectListItem>), new { @multiple = "" })
+
+        </div>
+    </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success">保存</button>
+                                @Html.ActionLink("返回", "Index", "Branch", new { @class = "btn btn-success" })
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section FootContent{
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/js/bootstrap-datepicker.js"></script>*@
+    <script src="~/Scripts/js/masked.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+
+    <script src="~/Scripts/js/matrix.form_common.js"></script>
+    @*<script src="~/Scripts/js/wysihtml5-0.3.0.js"></script>*@
+    <script src="~/Scripts/js/jquery.peity.min.js"></script>
+    @*<script src="~/Scripts/js/bootstrap-wysihtml5.js"></script>*@
+    @*<script>
+            $('.textarea_editor').wysihtml5();
+        </script>*@
+}

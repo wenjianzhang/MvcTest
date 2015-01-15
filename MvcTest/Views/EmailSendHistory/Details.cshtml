@@ -1,0 +1,183 @@
+﻿@model MvcTest.Models.EmailSendHistory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@section HeadContent{
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/Content/css/colorpicker.css" />
+    <link rel="stylesheet" href="~/Content/css/datepicker.css" />
+    <link rel="stylesheet" href="~/Content/css/uniform.css" />
+    <link rel="stylesheet" href="~/Content/css/select2.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-media.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-wysihtml5.css" />
+    <link href="~/fonts/css/font-awesome.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+}
+
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">邮件发送记录</a> <a href="#" class="current">详情</a> </div>
+        @*<h1>Common Form Elements</h1>*@
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-align-justify"></i> </span>
+                        <h5>邮件发送记录</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+
+
+                        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+
+                            @Html.AntiForgeryToken()
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.SendUsers_Id, "发送者编号ID，0=系统管理员  ", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.SendUsers_Id, new { @class = "span8", placeholder = "发送者编号ID，0=系统管理员 ", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.SendUsers_Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.SendUsers_Name, "发送者账号", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.SendUsers_Name, new { @class = "span8", placeholder = "发送者账号", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.SendUsers_Name)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.SendUsers_Email, "发送者邮箱", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.SendUsers_Email, new { @class = "span8", placeholder = "发送者邮箱", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.SendUsers_Email)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.RecUsers_Id, "接受者编号ID，0=所有人", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.RecUsers_Id, new { @class = "span8", placeholder = "接受者编号ID，0=所有人  ", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.RecUsers_Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.RecUsers_Name, "接收者账号", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.RecUsers_Name, new { @class = "span8", placeholder = "接收者账号", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.RecUsers_Name)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.RecUsers_Email, "接收者邮箱", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.RecUsers_Email, new { @class = "span8", placeholder = "接收者邮箱", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.RecUsers_Email)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.RecUserLevel_Id, "接受者编号ID，0=所有人", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.RecUserLevel_Id, new { @class = "span8", placeholder = "接受者编号ID，0=所有人", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.RecUserLevel_Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.RecUserLevel_Name, "接受者账号", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.RecUserLevel_Name, new { @class = "span8", placeholder = "接受者账号", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.RecUserLevel_Name)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.EmailSubject, "邮件主题", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.EmailSubject, new { @class = "span8", placeholder = "邮件主题", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.EmailSubject)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.EmailContent, "邮件内容", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.EmailContent, new { @class = "span8", placeholder = "邮件内容", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.EmailContent)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.SendDate, "站内信发送时间", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.SendDate, new { @class = "span8", placeholder = "站内信发送时间", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.SendDate)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Status, "发送状态：0：发送失败；1发送成功 ", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Status, new { @class = "span8", placeholder = "发送状态：0：发送失败；1发送成功", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.Status)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.StatusName, "发送状态名称", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.StatusName, new { @class = "span8", placeholder = "发送状态名称", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.StatusName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.ErrorMsg, "异常信息", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.ErrorMsg, new { @class = "span8", placeholder = "异常信息", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.ErrorMsg)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Template_Id, "模板ID", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Template_Id, new { @class = "span8", placeholder = "模板ID", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.Template_Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Template_Name, "模板名称", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Template_Name, new { @class = "span8", placeholder = "模板名称", @disabled = "" })
+                                    @Html.ValidationMessageFor(model => model.Template_Name)
+                                </div>
+                            </div>
+
+                        }
+                        <div class="form-actions">
+                            @Html.ActionLink("返回", "Index", "WebConfig", new { @class = "btn btn-success" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section FootContent{
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/js/masked.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+
+    @*<script src="~/Scripts/js/matrix.form_common.js"></script>*@
+    <script src="~/Scripts/js/wysihtml5-0.3.0.js"></script>
+    <script src="~/Scripts/js/jquery.peity.min.js"></script>
+    <script src="~/Scripts/js/bootstrap-wysihtml5.js"></script>
+    <script>
+        $('.textarea_editor').wysihtml5();
+    </script>
+}

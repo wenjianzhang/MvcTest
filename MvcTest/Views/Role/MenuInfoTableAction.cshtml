@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MvcTest.Models.PagePowerSignPublic>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MenuInfoTableAction</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/matrix-style.css" rel="stylesheet" />
+    <link href="~/Content/css/uniform.css" rel="stylesheet" />
+    <link href="~/Content/costum.css" rel="stylesheet" />
+</head>
+<body style="">
+    <div class="container-fluid" style=" padding:0;">
+        <div class="row-fluid" style=" margin:0;">
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    @using (Html.BeginForm("UpdateMenuInfoTableAction", "Role", new { mid = ViewBag.setMID, rid = ViewBag.setRID }, FormMethod.Post, new { @class = "form-horizontal  nopadding" }))
+                    {
+                        <div class="control-group">
+                            <div class="controls">
+
+                                @foreach (MvcTest.Models.PagePowerSignPublic itemPPSP in Model)
+                                {
+                                    <label>
+                                        @Html.CheckBox(itemPPSP.PPSPID.ToString(), new { @name = "radios" })
+                                        <span class="btn-large btn ">@itemPPSP.CName</span>
+                                    </label>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">确定</button>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+    <script src="~/Scripts/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/matrix.tables.js"></script>
+    <script src="~/Scripts/layer/layer.min.js"></script>
+</body>
+</html>

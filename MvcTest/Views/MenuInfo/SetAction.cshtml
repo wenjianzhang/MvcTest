@@ -1,0 +1,91 @@
+﻿@model IEnumerable<MvcTest.Models.PagePowerSignPublic>
+@using MvcTest.Models;
+@{
+    Layout = null;
+    List<PagePowerSign> PagePowerSign = ViewBag.PagePowerSigns as List<PagePowerSign>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MenuInfoTableAction</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/matrix-style.css" rel="stylesheet" />
+    <link href="~/Content/css/uniform.css" rel="stylesheet" />
+    <link href="~/Content/costum.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid" style=" padding:0;">
+        <div class="row-fluid" style=" margin:0;">
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    @using (Ajax.BeginForm("UpdatePagePowerSignPublicTableActions", "MenuInfo", new { id = ViewBag.setMIID }, new AjaxOptions { OnSuccess = "CloseWindow", HttpMethod = "Post" }, new { @class = "form-horizontal" }))
+                    {
+                        <div class="control-group">
+                            <div class="controls">
+
+                                @foreach (var item in Model)
+                                {
+                                    if (PagePowerSign.Where(s => s.PPSPID == item.PPSPID).Count() > 0)
+                                    {
+                                        <label id="@item.PPSPID">
+                                            @Html.CheckBox("MP_" + item.PPSPID.ToString(), new { @name = "radios", @checked = "checked" })
+                                            <span class="btn-large btn @item.StyleClass">@item.CName</span>
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <label id="@item.PPSPID">
+                                            @Html.CheckBox("MP_" + item.PPSPID.ToString(), new { @name = "radios" })
+                                            <span class="btn-large btn @item.StyleClass">@item.CName</span>
+                                        </label>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">确定</button>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+    <script src="~/Scripts/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/matrix.tables.js"></script>
+    <script src="~/Scripts/layer/layer.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/ecmascript">
+ var index = parent.layer.getFrameIndex(window.name);
+    function CloseWindow(e) {
+        if (e.toString() == "OK") {
+            //layer.msg('修改成功！',2,-1);
+
+            parent.layer.close(index);
+        }
+    }
+    function alertwindowaction(rolename, url) {
+        $.layer({
+            type: 2,
+            title: '当前配置【@ViewBag.setRNname】角色的权限',
+            iframe: { src: url },
+            maxmin: false,
+            area: ['500px']
+            //offset: ['100px', '']
+        });
+    }
+    </script>
+</body>
+
+</html>

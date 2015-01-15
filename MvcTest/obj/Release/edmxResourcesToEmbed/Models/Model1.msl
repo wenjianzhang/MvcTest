@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ToolsDBModelStoreContainer" CdmEntityContainer="ToolsDBEntities">
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="ToolsDBModel.Branch">
+        <MappingFragment StoreEntitySet="Branch">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="Manager_CName" ColumnName="Manager_CName" />
+          <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+          <ScalarProperty Name="Depth" ColumnName="Depth" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_Class">
+      <EntityTypeMapping TypeName="ToolsDBModel.C_Class">
+        <MappingFragment StoreEntitySet="C_Class">
+          <ScalarProperty Name="IsHtml" ColumnName="IsHtml" />
+          <ScalarProperty Name="IsPage" ColumnName="IsPage" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CustomCode" ColumnName="CustomCode" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="IsLock" ColumnName="IsLock" />
+          <ScalarProperty Name="SCFileEXT" ColumnName="SCFileEXT" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
+          <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+          <ScalarProperty Name="MenuImage" ColumnName="MenuImage" />
+          <ScalarProperty Name="IsMenuShow" ColumnName="IsMenuShow" />
+          <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+          <ScalarProperty Name="ClassDataTable" ColumnName="ClassDataTable" />
+          <ScalarProperty Name="PublicTime" ColumnName="PublicTime" />
+          <ScalarProperty Name="ImageUploadurl" ColumnName="ImageUploadurl" />
+          <ScalarProperty Name="NewsLookName" ColumnName="NewsLookName" />
+          <ScalarProperty Name="NewsSaveurl" ColumnName="NewsSaveurl" />
+          <ScalarProperty Name="PageIndex" ColumnName="PageIndex" />
+          <ScalarProperty Name="Namerules" ColumnName="Namerules" />
+          <ScalarProperty Name="Review" ColumnName="Review" />
+          <ScalarProperty Name="ClassFile" ColumnName="ClassFile" />
+          <ScalarProperty Name="Saveurl" ColumnName="Saveurl" />
+          <ScalarProperty Name="ClassModel" ColumnName="ClassModel" />
+          <ScalarProperty Name="BindDomain" ColumnName="BindDomain" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="OutClassUrl" ColumnName="OutClassUrl" />
+          <ScalarProperty Name="IsOutClass" ColumnName="IsOutClass" />
+          <ScalarProperty Name="PCID" ColumnName="PCID" />
+          <ScalarProperty Name="ClassEName" ColumnName="ClassEName" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailSendHistories">
+      <EntityTypeMapping TypeName="ToolsDBModel.EmailSendHistory">
+        <MappingFragment StoreEntitySet="EmailSendHistory">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Template_Name" ColumnName="Template_Name" />
+          <ScalarProperty Name="Template_Id" ColumnName="Template_Id" />
+          <ScalarProperty Name="ErrorMsg" ColumnName="ErrorMsg" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+          <ScalarProperty Name="EmailContent" ColumnName="EmailContent" />
+          <ScalarProperty Name="EmailSubject" ColumnName="EmailSubject" />
+          <ScalarProperty Name="RecUserLevel_Name" ColumnName="RecUserLevel_Name" />
+          <ScalarProperty Name="RecUserLevel_Id" ColumnName="RecUserLevel_Id" />
+          <ScalarProperty Name="RecUsers_Email" ColumnName="RecUsers_Email" />
+          <ScalarProperty Name="RecUsers_Name" ColumnName="RecUsers_Name" />
+          <ScalarProperty Name="RecUsers_Id" ColumnName="RecUsers_Id" />
+          <ScalarProperty Name="SendUsers_Email" ColumnName="SendUsers_Email" />
+          <ScalarProperty Name="SendUsers_Name" ColumnName="SendUsers_Name" />
+          <ScalarProperty Name="SendUsers_Id" ColumnName="SendUsers_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorLogs">
+      <EntityTypeMapping TypeName="ToolsDBModel.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLog">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="HelpLink" ColumnName="HelpLink" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+          <ScalarProperty Name="ErrSource" ColumnName="ErrSource" />
+          <ScalarProperty Name="ErrMessage" ColumnName="ErrMessage" />
+          <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="BrowserType" ColumnName="BrowserType" />
+          <ScalarProperty Name="BrowserVersion" ColumnName="BrowserVersion" />
+          <ScalarProperty Name="ErrTime" ColumnName="ErrTime" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginLogs">
+      <EntityTypeMapping TypeName="ToolsDBModel.LoginLog">
+        <MappingFragment StoreEntitySet="LoginLog">
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="Manager_CName" ColumnName="Manager_CName" />
+          <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="LoginLogID" ColumnName="LoginLogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Managers">
+      <EntityTypeMapping TypeName="ToolsDBModel.Manager">
+        <MappingFragment StoreEntitySet="Manager">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Manager_CName" ColumnName="Manager_CName" />
+          <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Msn" ColumnName="Msn" />
+          <ScalarProperty Name="Qq" ColumnName="Qq" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="GraduateSpecialty" ColumnName="GraduateSpecialty" />
+          <ScalarProperty Name="GraduateCollege" ColumnName="GraduateCollege" />
+          <ScalarProperty Name="Record" ColumnName="Record" />
+          <ScalarProperty Name="NationalName" ColumnName="NationalName" />
+          <ScalarProperty Name="NativePlace" ColumnName="NativePlace" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="PhotoImg" ColumnName="PhotoImg" />
+          <ScalarProperty Name="EName" ColumnName="EName" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+          <ScalarProperty Name="Position_Name" ColumnName="Position_Name" />
+          <ScalarProperty Name="Position_Id" ColumnName="Position_Id" />
+          <ScalarProperty Name="Branch_Name" ColumnName="Branch_Name" />
+          <ScalarProperty Name="Branch_Code" ColumnName="Branch_Code" />
+          <ScalarProperty Name="Branch_Id" ColumnName="Branch_Id" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
+          <ScalarProperty Name="LoginIp" ColumnName="LoginIp" />
+          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+          <ScalarProperty Name="LoginPass" ColumnName="LoginPass" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="MID" ColumnName="MID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuInfoes">
+      <EntityTypeMapping TypeName="ToolsDBModel.MenuInfo">
+        <MappingFragment StoreEntitySet="MenuInfo">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="IsMenu" ColumnName="IsMenu" />
+          <ScalarProperty Name="IsDisplay" ColumnName="IsDisplay" />
+          <ScalarProperty Name="Depth" ColumnName="Depth" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MIID" ColumnName="MIID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagePowerSigns">
+      <EntityTypeMapping TypeName="ToolsDBModel.PagePowerSign">
+        <MappingFragment StoreEntitySet="PagePowerSign">
+          <ScalarProperty Name="EName" ColumnName="EName" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="PPSPID" ColumnName="PPSPID" />
+          <ScalarProperty Name="MIID" ColumnName="MIID" />
+          <ScalarProperty Name="PPSID" ColumnName="PPSID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagePowerSignPublics">
+      <EntityTypeMapping TypeName="ToolsDBModel.PagePowerSignPublic">
+        <MappingFragment StoreEntitySet="PagePowerSignPublic">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="StyleClass" ColumnName="StyleClass" />
+          <ScalarProperty Name="EName" ColumnName="EName" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="PPSPID" ColumnName="PPSPID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="ToolsDBModel.Position">
+        <MappingFragment StoreEntitySet="Position">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="Manager_CName" ColumnName="Manager_CName" />
+          <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+          <ScalarProperty Name="SetBranchCode" ColumnName="SetBranchCode" />
+          <ScalarProperty Name="IsSetBranchPower" ColumnName="IsSetBranchPower" />
+          <ScalarProperty Name="ControlPower" ColumnName="ControlPower" />
+          <ScalarProperty Name="PagePower" ColumnName="PagePower" />
+          <ScalarProperty Name="Branch_Name" ColumnName="Branch_Name" />
+          <ScalarProperty Name="Branch_Code" ColumnName="Branch_Code" />
+          <ScalarProperty Name="Branch_Id" ColumnName="Branch_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PID" ColumnName="PID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="ToolsDBModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RID" ColumnName="RID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleManagers">
+      <EntityTypeMapping TypeName="ToolsDBModel.RoleManager">
+        <MappingFragment StoreEntitySet="RoleManager">
+          <ScalarProperty Name="MID" ColumnName="MID" />
+          <ScalarProperty Name="RID" ColumnName="RID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleMenuPages">
+      <EntityTypeMapping TypeName="ToolsDBModel.RoleMenuPage">
+        <MappingFragment StoreEntitySet="RoleMenuPage">
+          <ScalarProperty Name="RID" ColumnName="RID" />
+          <ScalarProperty Name="PPSID" ColumnName="PPSID" />
+          <ScalarProperty Name="MIID" ColumnName="MIID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ToolsDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UseLogs">
+      <EntityTypeMapping TypeName="ToolsDBModel.UseLog">
+        <MappingFragment StoreEntitySet="UseLog">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="MenuInfo_Name" ColumnName="MenuInfo_Name" />
+          <ScalarProperty Name="MenuInfo_Id" ColumnName="MenuInfo_Id" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="Manager_CName" ColumnName="Manager_CName" />
+          <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebConfigs">
+      <EntityTypeMapping TypeName="ToolsDBModel.WebConfig">
+        <MappingFragment StoreEntitySet="WebConfig">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="EmailDomain" ColumnName="EmailDomain" />
+          <ScalarProperty Name="EmailPassWord" ColumnName="EmailPassWord" />
+          <ScalarProperty Name="EmailUserName" ColumnName="EmailUserName" />
+          <ScalarProperty Name="EmailSmtp" ColumnName="EmailSmtp" />
+          <ScalarProperty Name="UseLogReserveTime" ColumnName="UseLogReserveTime" />
+          <ScalarProperty Name="LoginLogReserveTime" ColumnName="LoginLogReserveTime" />
+          <ScalarProperty Name="WebEmail" ColumnName="WebEmail" />
+          <ScalarProperty Name="WebDomain" ColumnName="WebDomain" />
+          <ScalarProperty Name="WebName" ColumnName="WebName" />
+          <ScalarProperty Name="WCID" ColumnName="WCID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterDatas">
+      <EntityTypeMapping TypeName="ToolsDBModel.MasterData">
+        <MappingFragment StoreEntitySet="MasterData">
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="CreaterID" ColumnName="CreaterID" />
+          <ScalarProperty Name="CreaterRoleID" ColumnName="CreaterRoleID" />
+          <ScalarProperty Name="DataID" ColumnName="DataID" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_News">
+      <EntityTypeMapping TypeName="ToolsDBModel.C_News">
+        <MappingFragment StoreEntitySet="C_News">
+          <ScalarProperty Name="PublicTime" ColumnName="PublicTime" />
+          <ScalarProperty Name="Sorc" ColumnName="Sorc" />
+          <ScalarProperty Name="CheckStat" ColumnName="CheckStat" />
+          <ScalarProperty Name="IsHTML" ColumnName="IsHTML" />
+          <ScalarProperty Name="DefineID" ColumnName="DefineID" />
+          <ScalarProperty Name="DataLib" ColumnName="DataLib" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="IsLock" ColumnName="IsLock" />
+          <ScalarProperty Name="TopNum" ColumnName="TopNum" />
+          <ScalarProperty Name="FileEXName" ColumnName="FileEXName" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="SavePath" ColumnName="SavePath" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Click" ColumnName="Click" />
+          <ScalarProperty Name="Metadesc" ColumnName="Metadesc" />
+          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Templet" ColumnName="Templet" />
+          <ScalarProperty Name="NewsPicTopline" ColumnName="NewsPicTopline" />
+          <ScalarProperty Name="NewsProperty" ColumnName="NewsProperty" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="Souce" ColumnName="Souce" />
+          <ScalarProperty Name="Auther" ColumnName="Auther" />
+          <ScalarProperty Name="inPicURL" ColumnName="inPicURL" />
+          <ScalarProperty Name="PicURL" ColumnName="PicURL" />
+          <ScalarProperty Name="URLLaddress" ColumnName="URLLaddress" />
+          <ScalarProperty Name="TitleBIT" ColumnName="TitleBIT" />
+          <ScalarProperty Name="TitleITF" ColumnName="TitleITF" />
+          <ScalarProperty Name="TitleColor" ColumnName="TitleColor" />
+          <ScalarProperty Name="SNewsTitle" ColumnName="SNewsTitle" />
+          <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="NID" ColumnName="NID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_Channel">
+      <EntityTypeMapping TypeName="ToolsDBModel.C_Channel">
+        <MappingFragment StoreEntitySet="C_Channel">
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Review" ColumnName="Review" />
+          <ScalarProperty Name="BindDomain" ColumnName="BindDomain" />
+          <ScalarProperty Name="Sorc" ColumnName="Sorc" />
+          <ScalarProperty Name="OutChannelUrl" ColumnName="OutChannelUrl" />
+          <ScalarProperty Name="IsOutChannel" ColumnName="IsOutChannel" />
+          <ScalarProperty Name="PCID" ColumnName="PCID" />
+          <ScalarProperty Name="ChannelEName" ColumnName="ChannelEName" />
+          <ScalarProperty Name="ChannelName" ColumnName="ChannelName" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThirdUsers">
+      <EntityTypeMapping TypeName="ToolsDBModel.ThirdUser">
+        <MappingFragment StoreEntitySet="ThirdUser">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Expires_in" ColumnName="Expires_in" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="NiceName" ColumnName="NiceName" />
+          <ScalarProperty Name="Access_token" ColumnName="Access_token" />
+          <ScalarProperty Name="ThirdId" ColumnName="ThirdId" />
+          <ScalarProperty Name="ThirdType" ColumnName="ThirdType" />
+          <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ToolsDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="TUID" ColumnName="TUID" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="IsThird" ColumnName="IsThird" />
+          <ScalarProperty Name="NiceName" ColumnName="NiceName" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

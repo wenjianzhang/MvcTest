@@ -1,0 +1,8 @@
+﻿/*----------------------------*/
+.form-horizontal .controls { margin-left:0;}
+.controls label { float: left; position: relative; margin-right: 5px; }
+    .controls label .checker { position: absolute; left: 0; top: 0; }
+    .controls label span { }
+/*.controls label { float:left;}*/
+
+/*.table th, .table td { padding: 4px; font-size: 12px; }*/

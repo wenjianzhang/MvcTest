@@ -1,0 +1,151 @@
+﻿@model MvcTest.Model.ThirdUserR
+    @{
+        ViewBag.Title = "Create";
+    }
+    @section HeadContent{
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="~/Content/css/datepicker.css" />
+        <link rel="stylesheet" href="~/Content/css/uniform.css" />
+        <link rel="stylesheet" href="~/Content/css/select2.css" />
+        <link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+        <link rel="stylesheet" href="~/Content/css/matrix-media.css" />
+        <link rel="stylesheet" href="~/Content/css/bootstrap-wysihtml5.css" />
+    }
+    <div id="content">
+        <div id="content-header">
+            <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">User</a> <a href="#" class="current">新建</a> </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="widget-box">
+                        <div class="widget-title">
+                            <span class="icon"> <i class="icon-align-justify"></i> </span>
+                            <h5>User</h5>
+                        </div>
+                        <div class="widget-content nopadding">
+                            @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "form-horizontal" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+
+
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.UserName, "UserName", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.UserName, new { @class = "span8", placeholder = "UserName" })
+                                        @Html.ValidationMessageFor(model => model.UserName)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.PassWord, "PassWord", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.PassWord, new { @class = "span8", placeholder = "PassWord" })
+                                        @Html.ValidationMessageFor(model => model.PassWord)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.CreatTime, "CreatTime", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.CreatTime, new { @class = "span8", placeholder = "CreatTime" })
+                                        @Html.ValidationMessageFor(model => model.CreatTime)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.LastTime, "LastTime", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.LastTime, new { @class = "span8", placeholder = "LastTime" })
+                                        @Html.ValidationMessageFor(model => model.LastTime)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.ThirdType, "ThirdType", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.ThirdType, new { @class = "span8", placeholder = "ThirdType" })
+                                        @Html.ValidationMessageFor(model => model.ThirdType)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.ThirdId, "ThirdId", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.ThirdId, new { @class = "span8", placeholder = "ThirdId" })
+                                        @Html.ValidationMessageFor(model => model.ThirdId)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Access_token, "Access_token", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Access_token, new { @class = "span8", placeholder = "Access_token" })
+                                        @Html.ValidationMessageFor(model => model.Access_token)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.NiceName, "NiceName", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.NiceName, new { @class = "span8", placeholder = "NiceName" })
+                                        @Html.ValidationMessageFor(model => model.NiceName)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Sex, "Sex", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Sex, new { @class = "span8", placeholder = "Sex" })
+                                        @Html.ValidationMessageFor(model => model.Sex)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Province, "Province", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Province, new { @class = "span8", placeholder = "Province" })
+                                        @Html.ValidationMessageFor(model => model.Province)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.City, "City", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.City, new { @class = "span8", placeholder = "City" })
+                                        @Html.ValidationMessageFor(model => model.City)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Photo, "Photo", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Photo, new { @class = "span8", placeholder = "Photo" })
+                                        @Html.ValidationMessageFor(model => model.Photo)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    @Html.LabelFor(model => model.Expires_in, "Expires_in", new { @class = "control-label" })
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Expires_in, new { @class = "span8", placeholder = "Expires_in" })
+                                        @Html.ValidationMessageFor(model => model.Expires_in)
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-success">保存</button>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section FootContent{
+        <script src="~/Scripts/js/jquery.min.js"></script>
+        <script src="~/Scripts/js/matrix.js"></script>
+        <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+        <script src="~/Scripts/js/bootstrap.min.js"></script>
+        <script src="~/Scripts/js/bootstrap-datepicker.js"></script>
+        <script src="~/Scripts/js/masked.js"></script>
+        <script src="~/Scripts/js/jquery.uniform.js"></script>
+        <script src="~/Scripts/js/select2.min.js"></script>
+        <script src="~/Scripts/js/matrix.form_common.js"></script>
+        <script src="~/Scripts/js/wysihtml5-0.3.0.js"></script>
+        <script src="~/Scripts/js/jquery.peity.min.js"></script>
+        <script src="~/Scripts/js/bootstrap-wysihtml5.js"></script>
+    }

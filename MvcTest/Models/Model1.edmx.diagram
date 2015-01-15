@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="50ea31ecd05642068a4f8d1863f0b252" Name="Diagram1">
+        <EntityTypeShape EntityType="ToolsDBModel.Branch" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.C_Class" Width="1.5" PointX="2.75" PointY="5.5" />
+        <EntityTypeShape EntityType="ToolsDBModel.EmailSendHistory" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.ErrorLog" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.LoginLog" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.Manager" Width="1.5" PointX="9.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.MenuInfo" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="ToolsDBModel.PagePowerSign" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="ToolsDBModel.PagePowerSignPublic" Width="1.5" PointX="0.75" PointY="5.25" />
+        <EntityTypeShape EntityType="ToolsDBModel.Position" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.Role" Width="1.5" PointX="11.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.RoleManager" Width="1.5" PointX="11.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.RoleMenuPage" Width="1.5" PointX="11.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.sysdiagram" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.UseLog" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.WebConfig" Width="1.5" PointX="13.75" PointY="3.75" />
+        <AssociationConnector Association="ToolsDBModel.FK_PAGEPOWE_REFERENCE_MENUINFO" />
+        <AssociationConnector Association="ToolsDBModel.FK_PAGEPOWE_REFERENCE_PAGEPOWE" />
+        <EntityTypeShape EntityType="ToolsDBModel.MasterData" Width="1.5" PointX="3.375" PointY="14.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.C_News" Width="1.5" PointX="5" PointY="5.125" />
+        <AssociationConnector Association="ToolsDBModel.FK_C_NEWS_REFERENCE_C_CLASS" />
+        <EntityTypeShape EntityType="ToolsDBModel.C_Channel" Width="1.5" PointX="5.375" PointY="14.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.ThirdUser" Width="1.5" PointX="14.375" PointY="7.75" />
+        <EntityTypeShape EntityType="ToolsDBModel.User" Width="1.5" PointX="14.375" PointY="12.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

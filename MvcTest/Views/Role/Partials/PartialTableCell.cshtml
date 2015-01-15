@@ -1,0 +1,101 @@
+﻿@model IEnumerable<MvcTest.Models.MenuInfo>
+@using MvcTest.Models;
+@{
+    List<PagePowerSignPublic> PagePowerSignPubliclist = new List<PagePowerSignPublic>();
+    List<PagePowerSign> PagePowerSign = new List<PagePowerSign>();
+}
+@using (ToolsDBEntities db = new ToolsDBEntities())
+{
+    PagePowerSignPubliclist = db.PagePowerSignPublics.ToList();
+    PagePowerSign = db.PagePowerSigns.ToList();
+    ViewBag.PagePowerSignPubliclist = PagePowerSignPubliclist;
+}
+@foreach (var item in Model)
+{
+    List<RoleMenuPage> rolemenurpages = ViewBag.rolemenurpages as List<RoleMenuPage>;
+    int shendu = int.Parse(ViewData["shendu"].ToString()) + 1;
+    string nbsp = "";
+    <tr class="gradeX">
+        <td>
+            @Html.CheckBox(item.MIID.ToString())
+        </td>
+        <td>
+            @for (int i = 0; i < shendu; i++)
+            {
+                nbsp = nbsp + "&nbsp; &nbsp; &nbsp; &nbsp;";
+            }
+            @MvcHtmlString.Create(nbsp)
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Url)
+        </td>
+        <td>
+            <div class="control-group">
+                <div class="controls">
+                    @if (Model.Where(s => s.ParentId == item.MIID).Count() == 0)
+                    {
+                        //List<PagePowerSign> pps = PagePowerSign.Where(s => s.MIID == item.MIID).ToList();
+                        List<PagePowerSignPublic> ppsp = (from aa in (ViewBag.PagePowerSignPubliclist as List<PagePowerSignPublic>)
+                                                          join bb in PagePowerSign on aa.PPSPID equals bb.PPSPID
+                                                          where bb.MIID == item.MIID
+                                                          select aa).ToList();
+                        // foreach (PagePowerSignPublic itemPPSP in (ViewBag.PagePowerSignPubliclist as List<PagePowerSignPublic>).Contains(pps.c))
+                        foreach (PagePowerSignPublic itemPPSP in ppsp)
+                        {
+                            if (rolemenurpages.Where(s => s.MIID == item.MIID && s.PPSID == itemPPSP.PPSPID).Count() > 0)
+                            {
+                                <label id="@item.MIID-@itemPPSP.PPSPID">
+                                    @Html.CheckBox("MA_" + item.MIID.ToString() + "_" + itemPPSP.PPSPID.ToString(), new { @name = "radios", @checked = "checked" })
+                                    <span class="btn @itemPPSP.StyleClass">@itemPPSP.CName</span>
+                                </label>
+                            }
+                            else
+                            {
+                                <label id="@item.MIID-@itemPPSP.PPSPID">
+                                    @Html.CheckBox("MA_" + item.MIID.ToString() + "_" + itemPPSP.PPSPID.ToString(), new { @name = "radios" })
+                                    <span class="btn @itemPPSP.StyleClass">@itemPPSP.CName</span>
+                                </label>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+        </td>
+        <td>
+            @if (Model.Where(s => s.ParentId == item.MIID).Count() == 0)
+            {
+
+                <a onclick="alertwindowaction('@item.Name','MenuInfoTableAction?rid=@ViewBag.setRID&mid=@item.MIID')" class="btn btn-success btn-mini">选择操作</a>
+                @*<a href="#myModal_@item.MIID" data-toggle="modal" class="btn btn-success btn-mini">选择操作</a>*@
+
+                @*using (Html.BeginForm("UpdateMenuInfoTableAction", "Role", new { mid = item.MIID, rid = @ViewBag.setRID }, FormMethod.Post, new { @class = "modal hide" }))
+                    {
+                        <div class="modal-header">
+                            <button data-dismiss="modal" class="close" type="button">×</button>
+                            <h3>选择操作</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="control-group">
+                                <div class="controls">
+
+                                    @foreach (PagePowerSignPublic itemPPSP in ViewBag.PagePowerSignPubliclist as List<PagePowerSignPublic>)
+                                    {
+                                        <label id="@itemPPSP.PPSPID" itemid="@item.MIID">
+                                            @Html.CheckBox(itemPPSP.PPSPID.ToString(), new { @name = "radios" })
+                                            <span class="btn-large btn ">@itemPPSP.CName</span>
+                                        </label>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer"> <a data-dismiss="modal" class="btn btn-primary" href="#">确定</a> <a data-dismiss="modal" class="btn" href="#">取消</a> </div>
+                    }*@
+            }
+
+        </td>
+    </tr>
+            Html.RenderPartial("Partials/PartialTableCell", Model.Where(s => s.ParentId == item.MIID));
+}

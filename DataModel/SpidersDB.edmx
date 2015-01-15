@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SpidersDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CollectionRulesTab">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CollectionName" Type="varchar" MaxLength="500" />
+          <Property Name="SourceSiteTag" Type="varchar" MaxLength="50" />
+          <Property Name="SourceSiteName" Type="varchar" MaxLength="100" />
+          <Property Name="BaseUrl" Type="varchar" MaxLength="500" />
+          <Property Name="CollectionListRulesBig" Type="varchar" MaxLength="500" />
+          <Property Name="CollectionListRulesMin" Type="varchar" MaxLength="500" />
+          <Property Name="CollectionUrl" Type="varchar" MaxLength="500" />
+          <Property Name="Contentleft" Type="varchar" MaxLength="500" />
+          <Property Name="Contentright" Type="varchar" MaxLength="500" />
+          <Property Name="Titleleft" Type="varchar" MaxLength="500" />
+          <Property Name="Titleright" Type="varchar" MaxLength="500" />
+          <Property Name="Imgleft" Type="varchar" MaxLength="500" />
+          <Property Name="Imgright" Type="varchar" MaxLength="500" />
+          <Property Name="NewPublishTimeLeft" Type="varchar" MaxLength="500" />
+          <Property Name="NewPublishTimeRight" Type="varchar" MaxLength="500" />
+          <Property Name="TypeNameLeft" Type="varchar" MaxLength="500" />
+          <Property Name="TypeNameRight" Type="varchar" MaxLength="500" />
+          <Property Name="Encoding" Type="varchar" MaxLength="50" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <EntityType Name="NewsTab">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SourceSiteTag" Type="varchar" MaxLength="50" />
+          <Property Name="SourceSiteName" Type="varchar" MaxLength="100" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="TypeName" Type="varchar" MaxLength="200" />
+          <Property Name="NewPublishTime" Type="datetime" />
+          <Property Name="BaseUrl" Type="varchar" MaxLength="500" />
+          <Property Name="Url" Type="varchar" MaxLength="500" />
+          <Property Name="ImgUrl" Type="varchar" MaxLength="500" />
+          <Property Name="Content" Type="ntext" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="IsDel" Type="int" />
+        </EntityType>
+        <EntityContainer Name="SpidersDBModelStoreContainer">
+          <EntitySet Name="CollectionRulesTab" EntityType="Self.CollectionRulesTab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsTab" EntityType="Self.NewsTab" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SpidersDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CollectionRulesTab">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CollectionName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SourceSiteTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SourceSiteName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BaseUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CollectionListRulesBig" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CollectionListRulesMin" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CollectionUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Contentleft" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Contentright" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Titleleft" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Titleright" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Imgleft" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Imgright" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NewPublishTimeLeft" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NewPublishTimeRight" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TypeNameLeft" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TypeNameRight" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Encoding" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="NewsTab">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SourceSiteTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SourceSiteName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NewPublishTime" Type="DateTime" Precision="3" />
+          <Property Name="BaseUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDel" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="SpidersDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CollectionRulesTabs" EntityType="Self.CollectionRulesTab" />
+          <EntitySet Name="NewsTabs" EntityType="Self.NewsTab" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SpidersDBModelStoreContainer" CdmEntityContainer="SpidersDBEntities">
+          <EntitySetMapping Name="CollectionRulesTabs">
+            <EntityTypeMapping TypeName="SpidersDBModel.CollectionRulesTab">
+              <MappingFragment StoreEntitySet="CollectionRulesTab">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CollectionName" ColumnName="CollectionName" />
+                <ScalarProperty Name="SourceSiteTag" ColumnName="SourceSiteTag" />
+                <ScalarProperty Name="SourceSiteName" ColumnName="SourceSiteName" />
+                <ScalarProperty Name="BaseUrl" ColumnName="BaseUrl" />
+                <ScalarProperty Name="CollectionListRulesBig" ColumnName="CollectionListRulesBig" />
+                <ScalarProperty Name="CollectionListRulesMin" ColumnName="CollectionListRulesMin" />
+                <ScalarProperty Name="CollectionUrl" ColumnName="CollectionUrl" />
+                <ScalarProperty Name="Contentleft" ColumnName="Contentleft" />
+                <ScalarProperty Name="Contentright" ColumnName="Contentright" />
+                <ScalarProperty Name="Titleleft" ColumnName="Titleleft" />
+                <ScalarProperty Name="Titleright" ColumnName="Titleright" />
+                <ScalarProperty Name="Imgleft" ColumnName="Imgleft" />
+                <ScalarProperty Name="Imgright" ColumnName="Imgright" />
+                <ScalarProperty Name="NewPublishTimeLeft" ColumnName="NewPublishTimeLeft" />
+                <ScalarProperty Name="NewPublishTimeRight" ColumnName="NewPublishTimeRight" />
+                <ScalarProperty Name="TypeNameLeft" ColumnName="TypeNameLeft" />
+                <ScalarProperty Name="TypeNameRight" ColumnName="TypeNameRight" />
+                <ScalarProperty Name="Encoding" ColumnName="Encoding" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsTabs">
+            <EntityTypeMapping TypeName="SpidersDBModel.NewsTab">
+              <MappingFragment StoreEntitySet="NewsTab">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SourceSiteTag" ColumnName="SourceSiteTag" />
+                <ScalarProperty Name="SourceSiteName" ColumnName="SourceSiteName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="NewPublishTime" ColumnName="NewPublishTime" />
+                <ScalarProperty Name="BaseUrl" ColumnName="BaseUrl" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,293 @@
+﻿@model MvcTest.Models.Manager
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@section HeadContent{
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/Content/css/colorpicker.css" />
+    <link rel="stylesheet" href="~/Content/css/datepicker.css" />
+    <link rel="stylesheet" href="~/Content/css/uniform.css" />
+    <link rel="stylesheet" href="~/Content/css/select2.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-media.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-wysihtml5.css" />
+    <link href="~/fonts/css/font-awesome.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+}
+
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">管理员表</a> <a href="#" class="current">删除</a> </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-align-justify"></i> </span>
+                        <h5>管理员表</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        @using (Html.BeginForm("Delete", "Manager", new { id = Model.MID }, FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+
+                            @Html.AntiForgeryToken()
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.LoginName, "登陆账号", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.LoginName, new { @class = "span8", placeholder = "登陆账号" })
+                                    @Html.ValidationMessageFor(model => model.LoginName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.LoginPass, "登陆密码", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.LoginPass, new { @class = "span8", placeholder = "登陆密码" })
+                                    @Html.ValidationMessageFor(model => model.LoginPass)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.LoginTime, "最后登陆时间", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.LoginTime, new { @class = "span8", placeholder = "最后登陆时间" })
+                                    @Html.ValidationMessageFor(model => model.LoginTime)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.LoginIp, "最后登陆IP", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.LoginIp, new { @class = "span8", placeholder = "最后登陆IP" })
+                                    @Html.ValidationMessageFor(model => model.LoginIp)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.LoginCount, "登陆次数", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.LoginCount, new { @class = "span8", placeholder = "登陆次数" })
+                                    @Html.ValidationMessageFor(model => model.LoginCount)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.CreateTime, "注册时间", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.CreateTime, new { @class = "span8", placeholder = "注册时间" })
+                                    @Html.ValidationMessageFor(model => model.CreateTime)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.UpdateTime, "资料最后修改日期", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.UpdateTime, new { @class = "span8", placeholder = "资料最后修改日期" })
+                                    @Html.ValidationMessageFor(model => model.UpdateTime)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Branch_Id, "所属部门ID", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Branch_Id, new { @class = "span8", placeholder = "所属部门ID" })
+                                    @Html.ValidationMessageFor(model => model.Branch_Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Branch_Code, "所属部门编号，用户只能正式归属于一个部门 ", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Branch_Code, new { @class = "span8", placeholder = "所属部门编号，用户只能正式归属于一个部门" })
+                                    @Html.ValidationMessageFor(model => model.Branch_Code)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Branch_Name, "部门名称", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Branch_Name, new { @class = "span8", placeholder = "部门名称" })
+                                    @Html.ValidationMessageFor(model => model.Branch_Name)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Position_Id, "用户职位ID", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Position_Id, new { @class = "span8", placeholder = "用户职位ID" })
+                                    @Html.ValidationMessageFor(model => model.Position_Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Position_Name, "职位名称", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Position_Name, new { @class = "span8", placeholder = "职位名称" })
+                                    @Html.ValidationMessageFor(model => model.Position_Name)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Enable, "账号是否启用，1=true(启用)，0=false（禁用）", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Enable, new { @class = "span8", placeholder = "账号是否启用，1=true(启用)，0=false（禁用）" })
+                                    @Html.ValidationMessageFor(model => model.Enable)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.CName, "用户中文名称", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.CName, new { @class = "span8", placeholder = "用户中文名称" })
+                                    @Html.ValidationMessageFor(model => model.CName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.EName, "用户英文名称", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.EName, new { @class = "span8", placeholder = "用户英文名称" })
+                                    @Html.ValidationMessageFor(model => model.EName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.PhotoImg, "头像图片路径", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.PhotoImg, new { @class = "span8", placeholder = "头像图片路径" })
+                                    @Html.ValidationMessageFor(model => model.PhotoImg)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Sex, "性别（0=未知，1=男，2=女）", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Sex, new { @class = "span8", placeholder = "性别（0=未知，1=男，2=女）" })
+                                    @Html.ValidationMessageFor(model => model.Sex)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Birthday, "出生日期", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Birthday, new { @class = "span8", placeholder = "出生日期" })
+                                    @Html.ValidationMessageFor(model => model.Birthday)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.NativePlace, "籍贯", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.NativePlace, new { @class = "span8", placeholder = "籍贯" })
+                                    @Html.ValidationMessageFor(model => model.NativePlace)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.NationalName, "民族", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.NationalName, new { @class = "span8", placeholder = "民族" })
+                                    @Html.ValidationMessageFor(model => model.NationalName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Record, "个人--学历", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Record, new { @class = "span8", placeholder = "个人--学历" })
+                                    @Html.ValidationMessageFor(model => model.Record)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.GraduateCollege, "毕业学校", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.GraduateCollege, new { @class = "span8", placeholder = "毕业学校" })
+                                    @Html.ValidationMessageFor(model => model.GraduateCollege)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.GraduateSpecialty, "毕业专业", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.GraduateSpecialty, new { @class = "span8", placeholder = "毕业专业" })
+                                    @Html.ValidationMessageFor(model => model.GraduateSpecialty)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Tel, "个人--联系电话", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Tel, new { @class = "span8", placeholder = "个人--联系电话" })
+                                    @Html.ValidationMessageFor(model => model.Tel)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Mobile, "个人--移动电话", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Mobile, new { @class = "span8", placeholder = "个人--移动电话" })
+                                    @Html.ValidationMessageFor(model => model.Mobile)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Email, "个人--联系邮箱", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "span8", placeholder = "个人--联系邮箱" })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Qq, "个人--QQ", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Qq, new { @class = "span8", placeholder = "个人--QQ" })
+                                    @Html.ValidationMessageFor(model => model.Qq)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Msn, "个人--Msn", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Msn, new { @class = "span8", placeholder = "个人--Msn" })
+                                    @Html.ValidationMessageFor(model => model.Msn)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Address, "个人--通讯地址", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "span8", placeholder = "个人--通讯地址" })
+                                    @Html.ValidationMessageFor(model => model.Address)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Content, "备注", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Content, new { @class = "span8", placeholder = "备注" })
+                                    @Html.ValidationMessageFor(model => model.Content)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Manager_Id, "修改人员id", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Manager_Id, new { @class = "span8", placeholder = "修改人员id" })
+                                    @Html.ValidationMessageFor(model => model.Manager_Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(model => model.Manager_CName, "修改人中文名称", new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Manager_CName, new { @class = "span8", placeholder = "修改人中文名称" })
+                                    @Html.ValidationMessageFor(model => model.Manager_CName)
+                                </div>
+                            </div>
+                            <div class="form-actions no-color">
+                                <input type="submit" value="删除" class="btn btn-default" /> |
+                                @Html.ActionLink("返回", "Index", "WebConfig", new { @class = "btn btn-success" })
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section FootContent{
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/js/masked.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+
+    @*<script src="~/Scripts/js/matrix.form_common.js"></script>*@
+    <script src="~/Scripts/js/wysihtml5-0.3.0.js"></script>
+    <script src="~/Scripts/js/jquery.peity.min.js"></script>
+    <script src="~/Scripts/js/bootstrap-wysihtml5.js"></script>
+    <script>
+        $('.textarea_editor').wysihtml5();
+    </script>
+}

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SpidersDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CollectionRulesTab">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CollectionName" Type="varchar" MaxLength="500" />
+    <Property Name="SourceSiteTag" Type="varchar" MaxLength="50" />
+    <Property Name="SourceSiteName" Type="varchar" MaxLength="100" />
+    <Property Name="BaseUrl" Type="varchar" MaxLength="500" />
+    <Property Name="CollectionListRulesBig" Type="varchar" MaxLength="500" />
+    <Property Name="CollectionListRulesMin" Type="varchar" MaxLength="500" />
+    <Property Name="CollectionUrl" Type="varchar" MaxLength="500" />
+    <Property Name="Contentleft" Type="varchar" MaxLength="500" />
+    <Property Name="Contentright" Type="varchar" MaxLength="500" />
+    <Property Name="Titleleft" Type="varchar" MaxLength="500" />
+    <Property Name="Titleright" Type="varchar" MaxLength="500" />
+    <Property Name="Imgleft" Type="varchar" MaxLength="500" />
+    <Property Name="Imgright" Type="varchar" MaxLength="500" />
+    <Property Name="NewPublishTimeLeft" Type="varchar" MaxLength="500" />
+    <Property Name="NewPublishTimeRight" Type="varchar" MaxLength="500" />
+    <Property Name="TypeNameLeft" Type="varchar" MaxLength="500" />
+    <Property Name="TypeNameRight" Type="varchar" MaxLength="500" />
+    <Property Name="Encoding" Type="varchar" MaxLength="50" />
+    <Property Name="IsDel" Type="int" />
+  </EntityType>
+  <EntityType Name="NewsTab">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SourceSiteTag" Type="varchar" MaxLength="50" />
+    <Property Name="SourceSiteName" Type="varchar" MaxLength="100" />
+    <Property Name="Title" Type="varchar" MaxLength="500" />
+    <Property Name="TypeName" Type="varchar" MaxLength="200" />
+    <Property Name="NewPublishTime" Type="datetime" />
+    <Property Name="BaseUrl" Type="varchar" MaxLength="500" />
+    <Property Name="Url" Type="varchar" MaxLength="500" />
+    <Property Name="ImgUrl" Type="varchar" MaxLength="500" />
+    <Property Name="Content" Type="ntext" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="IsDel" Type="int" />
+  </EntityType>
+  <EntityContainer Name="SpidersDBModelStoreContainer">
+    <EntitySet Name="CollectionRulesTab" EntityType="Self.CollectionRulesTab" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NewsTab" EntityType="Self.NewsTab" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

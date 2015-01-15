@@ -1,0 +1,215 @@
+﻿@model IEnumerable<MvcTest.Models.MenuInfo>
+@using MvcTest.Extensions;
+@using MvcTest.Models;
+@{
+    ViewBag.Title = "Index";
+    string[] EName = ViewBag.EName as string[];
+}
+@section HeadContent{
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/Content/css/uniform.css" />
+    <link rel="stylesheet" href="~/Content/css/select2.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/css/matrix-media.css" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+
+
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/Home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">菜单表</a> </div>
+    </div>
+    <div class="container-fluid">
+        <div class="widget-box">
+            <div class="widget-content">
+                @if (EName.Contains("Create"))
+                {
+                    @Html.ActionLink("新建", "Create", new { }, new { @class = "btn btn-primary" })
+                }
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"><i class="icon-th"></i></span>
+                        <h5>菜单表</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <table class="table table-bordered table-striped with-check">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="title-checkbox" name="title-checkbox" /></th>
+
+                                    <th>
+                                        菜单名称或各个页面功能名称
+                                    </th>
+
+                                    <th>
+                                        各页面URL（主菜单与分类菜单没有URL）
+                                    </th>
+
+
+
+                                    <th>
+                                        排序
+                                    </th>
+
+                                    @*<th>
+                                        深度
+                                    </th>
+
+                                    <th>
+                                        该菜单是否在菜单栏显示
+                                    </th>
+
+                                    <th>
+                                        是否是菜单还是页面
+                                    </th>*@
+                                    <th>
+                                        操作
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Where(s => s.ParentId == 0))
+                                {
+                                    <tr class="gradeX">
+
+                                        <td>
+                                            @Html.CheckBox(item.MIID.ToString())
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Url)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Sort)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.Depth)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IsDisplay)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IsMenu)
+                                        </td>*@
+                                        <td>
+                                            @if (EName.Contains("Edit"))
+                                            {
+                                                @Html.ActionLink("修改", "Edit", new { id = item.MIID }, new { @class = "btn btn-primary btn-mini", @onclick = "OnloadMessage2()" })
+                                            }
+                                            
+                                            @if (EName.Contains("Details"))
+                                            {
+                                                @Html.ActionLink("详情", "Details", new { id = item.MIID }, new { @class = "btn btn-info btn-mini", @onclick = "OnloadMessage2()" })
+                                            }
+                                            
+                                            @if (EName.Contains("Delete"))
+                                            {
+                                                @*@Html.ActionLink("删除", "Delete", new { id = item.MIID }, new { @class = "btn btn-danger btn-mini", @onclick = "OnloadMessage2()" })*@
+                                                 <a class="btn btn-danger btn-mini" href="javascript:void(0);" onclick="myconfirm(@item.MIID)">删除</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                            ViewData["shendu"] = 0;
+
+                                            Html.RenderPartial("Partials/PartialTableCell", Model.Where(s => s.ParentId == item.MIID));
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section FootContent{
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/jquery.ui.custom.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/jquery.uniform.js"></script>
+    <script src="~/Scripts/js/select2.min.js"></script>
+    <script src="~/Scripts/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/js/matrix.js"></script>
+    <script src="~/Scripts/js/matrix.tables.js"></script>
+    <script src="~/Scripts/layer/layer.min.js"></script>
+    <script>
+
+        @*alertwindow('myIframe_@item.RID', 'myModal_@item.RID', 'MenuInfoTable?id=@item.RID#myModal_@item.RID')*@
+        //function alertwindow(myIframe, myModal, url) {
+        //    $('#' + myIframe).attr("src", url);
+        //    $('#' + myModal).modal({ show: true });
+        //}
+        function alertwindow(rolename, url) {
+            $.layer({
+                name: "setrole",
+                type: 2,
+                title: '当前配置【' + rolename + '】的动作',
+                // title: '当前配置【@ViewBag.setRNname】角色的权限',
+                iframe: { src: url },
+                maxmin: false,
+                //area: ['900px', ($(window).height() - 450) + 'px'],
+                area: ['400px', '200px'],
+                offset: ['80px', ''],
+
+                success: function () {
+                }
+            });
+        }
+        // var index = parent.layer.getFrameIndex(window.name);
+        //function CloseWindow() {
+        //    parent.layer.msg('您将标记成功传送给了父窗口', 1, 1);
+        //    parent.layer.close(parent.layer.getFrameIndex(window.name));
+        //}
+        function CloseWindow(e) {
+            if (e.toString() == "OK") {
+                alert();
+                //var index = parent.layer.getFrameIndex(window.name);
+                layer.close(layer.getFrameIndex(window.name));
+            }
+        }
+    </script>
+}
+
+
+@section FootBottom{
+    <script>
+        function myconfirm(id) {
+            if (id == "" || id == undefined) {
+                layer.msg('参数错误', 1, 1);
+                return;
+            }
+
+            layer.confirm('确认删除？', function (index) {
+                layer.load("正在删除", 0);
+                Del(id);
+            });
+        }
+        function Del(id, Token) {
+            if (id == "" || id == undefined) {
+
+                return;
+            }
+            $.ajax({
+                type: "post", url: "/MenuInfo/DeleteConfirmedCom", dataType: "text", data: { id: id, __RequestVerificationToken: Token }, success: function (data) {
+                    if (data.toString() == "OK") {
+                        layer.load("删除成功，正在跳转", 0);
+                        location.reload();
+                    }
+                    else if (data.toString() == "NO") {
+                        layer.msg('删除失败，请联系管理员', 2);
+                    }
+                }
+            });
+        }
+    </script>
+}
